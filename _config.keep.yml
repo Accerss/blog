@@ -16,10 +16,10 @@ style:
   primary_color: "#0066CC"
 
   # Avatar (You can use local image or image external link)
-  avatar: /images/avatar.svg
+  avatar: https://gwzone.oss-cn-beijing.aliyuncs.com/user/avatar.png
 
   # Favicon (You can use local image or image external link)
-  favicon: /images/logo.svg
+  favicon: https://gwzone.oss-cn-beijing.aliyuncs.com/blog/favicon.png
 
   # Article image align position, value: left | center
   article_img_align: left
