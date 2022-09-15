@@ -55,13 +55,13 @@ social_contact:
   enable: true
   links:
     github: # your GitHub URL
-    weixin: # your WeChat QR-Code URL
-    qq: # your QQ QR-Code URL
+    weixin: https://u.wechat.com/EDV94BbCEnf7Fix8PqlDUk0
+    qq: https://qm.qq.com/cgi-bin/qm/qr?k=oE66QY6EwfnR3SraFA5EmZSrqLej82Xf&noverify=0
     weibo: # your WeiBo URL
     zhihu: # your ZhiHu URL
     twitter: # your twitter URL
     facebook: # your facebook URL
-    email: # your email
+    email: guohaohao2012@vip.qq.com
 
 # ---------------------------------------------------------------------------------------
 # Navigation menu
@@ -160,7 +160,7 @@ local_search:
 # ---------------------------------------------------------------------------------------
 comment:
   enable: true
-  use: valine # values: valine | gitalk | twikoo
+  use: gitalk # values: valine | gitalk | twikoo
 
   # Valine
   # See: https://github.com/xCss/Valine
@@ -172,10 +172,10 @@ comment:
   # Gitalk
   # See: https://github.com/gitalk/gitalk
   gitalk:
-    github_id: # GitHub repo owner
-    repository: # Repository name to store issues
-    client_id: # GitHub Application Client ID
-    client_secret: # GitHub Application Client Secret
+    github_id: Accerss
+    repository: comment
+    client_id: 10b7b95bac310f939620
+    client_secret: 9c87449868b17512976d4a8de7d13bcd9b17581a
 
   # Twikoo
   # See: https://github.com/imaegoo/twikoo
