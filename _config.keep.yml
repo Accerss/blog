@@ -173,7 +173,7 @@ comment:
   # See: https://github.com/gitalk/gitalk
   gitalk:
     github_id: Accerss
-    repository: comment
+    repository: blog
     client_id: 10b7b95bac310f939620
     client_secret: 9c87449868b17512976d4a8de7d13bcd9b17581a
 
