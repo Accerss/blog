@@ -1,15 +1,13 @@
 ---
 title: iot边缘计算
 date: 2022-09-23 21:55:14
-tags: [tag]
-categories: [cate]
-sticky: 999
+tags: [边缘计算]
+categories: [物联网]
+sticky: 99
 ---
 ## 稳定可靠的通信技术
 
 ### 有线通信技术
-
-https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images
 
 优点：稳定性高，可靠性强
 

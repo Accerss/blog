@@ -3,7 +3,7 @@ title: Git使用
 date: 2022-09-14 21:55:14
 tags: [tag]
 categories: [cate]
-sticky: 999
+sticky: 9
 ---
 # Git使用
 **Git Bash**：Unix与Linux风格的命令行，使用最多，推荐最多
