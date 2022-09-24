@@ -126,3 +126,12 @@ live2d:
     height: 500
   mobile:
     show: false
+
+
+# Search
+## See: https://github.com/theme-next/hexo-generator-searchdb
+search:
+  path: search.json
+  field: post
+  content: true
+  format: striptags

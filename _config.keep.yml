@@ -141,10 +141,10 @@ website_count:
   # busuanzi
   # See: http://ibruce.info/2015/04/04/busuanzi/
   busuanzi_count:
-    enable: false
-    site_uv: false
-    site_pv: false
-    page_pv: false
+    enable: true
+    site_uv: true
+    site_pv: true
+    page_pv: true
 
 # ---------------------------------------------------------------------------------------
 # Local Search
@@ -160,14 +160,14 @@ local_search:
 # ---------------------------------------------------------------------------------------
 comment:
   enable: true
-  use: gitalk # values: valine | gitalk | twikoo
+  use: valine # values: valine | gitalk | twikoo
 
   # Valine
   # See: https://github.com/xCss/Valine
   valine:
-    appid: # your leancloud application appid
-    appkey: # your leancloud application appkey
-    placeholder: # your placeholder
+    appid: kQN5AjYY9EhBthLOPzVMcon0-gzGzoHsz
+    appkey: szEY4Wen0kuoE6vJMsa5koPy
+    placeholder: 😜 尽情吐槽吧~
 
   # Gitalk
   # See: https://github.com/gitalk/gitalk
@@ -189,7 +189,7 @@ comment:
 # See: https://github.com/hexojs/hexo-generator-feed
 # ---------------------------------------------------------------------------------------
 rss:
-  enable: true
+  enable: false
 
 # ---------------------------------------------------------------------------------------
 # Lazyload image
@@ -218,7 +218,7 @@ post_end_tag:
 # Footer settings
 # ---------------------------------------------------------------------------------------
 footer:
-  since: 2020 # the starting year of your website, Can be null
+  since: 2016 # the starting year of your website, Can be null
   icp: # ICP record number of your website, Can be null
   upyun: # url
 
