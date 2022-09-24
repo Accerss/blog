@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="HaoHao Guo">
+    
+    <title>
+        
+            iot边缘计算 |
+        
+        GHao&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="https://gwzone.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"gwzone.cn","root":"/","language":"zh-CN"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"https://gwzone.oss-cn-beijing.aliyuncs.com/user/avatar.png","favicon":"https://gwzone.oss-cn-beijing.aliyuncs.com/blog/favicon.png","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://gwzone.oss-cn-beijing.aliyuncs.com/blog/loge.jpg">
+                </a>
+            
+            <a class="logo-title" href="/">
+                GHao&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/changelog"
+                            >
+                                更新日志
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/changelog">更新日志</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">iot边缘计算</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="https://gwzone.oss-cn-beijing.aliyuncs.com/user/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">HaoHao Guo</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-10-23 21:55:14</span>
+        <span class="mobile">2022-10-23 21:55</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E7%89%A9%E8%81%94%E7%BD%91/">物联网</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/">边缘计算</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>725 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>2 分钟</span>
+        </span>
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="稳定可靠的通信技术"><a href="#稳定可靠的通信技术" class="headerlink" title="稳定可靠的通信技术"></a>稳定可靠的通信技术</h2><h3 id="有线通信技术"><a href="#有线通信技术" class="headerlink" title="有线通信技术"></a>有线通信技术</h3><p>优点：稳定性高，可靠性强</p>
+<p>缺点：受限于传输媒介</p>
+<p>以太网:最通用的通信协议标准，标准以太网，快速以太网，10G以太网</p>
+<p>RS—232：个人计算机DB9 or DB25	不平衡传输方式，单边通信	传输距离不超过20m	1V1</p>
+<p>RS-485：可以实现联网	平衡传输，差分传输方式	几百到上千	1Vn</p>
+<p>M-Bus：户用仪表总线，远程抄表，低成本组网</p>
+<p>PLC：电力线通信，表表-&gt;工业网关</p>
+<h3 id="无线通信技术"><a href="#无线通信技术" class="headerlink" title="无线通信技术"></a>无线通信技术</h3><p>2G,3G,4G：蜂窝移动通信</p>
+<p>Bluetooth:2.4-2.48GH波段的无线电波，速率1Mbps，10cm-10m，速率快、低功耗、安全性高，节点少不利于多点布控</p>
+<p>Wi-Fi：连接到无线局域网，速度快</p>
+<p>ZigBee：低功耗局域网协议	物体遮挡衰减厉害  </p>
+<p>Z-Wave：用于住宅。30-100m	网络简单，速率较低</p>
+<h3 id="lpwa低功耗广域网"><a href="#lpwa低功耗广域网" class="headerlink" title="lpwa低功耗广域网"></a>lpwa低功耗广域网</h3><p>SigFox：低功耗，ISM射频频段</p>
+<p>NB-lot：窄频网络，可部署在蜂窝网络 </p>
+<p>LoRa：开源MAC层协议</p>
+<p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923194944959.png" alt="image-20220923194944959"></p>
+<p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923195011645.png" alt="image-20220923195011645"></p>
+<h2 id="OceanConnect"><a href="#OceanConnect" class="headerlink" title="OceanConnect"></a>OceanConnect</h2><p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923195209078.png" alt="image-20220923195209078"></p>
+<p>统一接口，方便拓展</p>
+<h3 id="MQTT和HTTP"><a href="#MQTT和HTTP" class="headerlink" title="MQTT和HTTP"></a>MQTT和HTTP</h3><p>消息队列遥测传输：Message Queuing Telemetry Transport</p>
+<p>IBM开发的基于TCP&#x2F;IP的即时通讯协议</p>
+<p>采用订阅发布的模式，长连接方式</p>
+<p>优点：协议简单，轻量级，消息可以短至两字节，对终端的硬件配置要求低</p>
+<p>智慧家庭</p>
+<p>CoAP：Constrained Application Protocol</p>
+<p>专用于资源受限设备的通信，NB-lot&#x2F;LoRa</p>
+<p>从http发展而来，采用请求响应</p>
+<p>最小4字节</p>
+<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923195746901.png" alt="image-20220923195746901"></p>
+<p>物联网平台层次</p>
+<p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923195812117.png" alt="image-20220923195812117"></p>
+<p>接入无关，可靠性，安全性，弹性伸缩，能力开放</p>
+<p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923200007426.png" alt="image-20220923200007426"></p>
+<p>设备管理：网关管理，REST和HTTPS下发各类配置管理命令，DM Server通过Coap&#x2F;HTTPS将命令传给网关或者其他直连设备，完成设备的配置管理</p>
+<p>鉴权：创建传感器鉴权，设备接入鉴权，上报数据鉴权</p>
+<p>规则引擎：规则绑定，满足条件，自动执行动作</p>
+<p>Portal：SP，OSS，Operation</p>
+<h3 id="平台架构"><a href="#平台架构" class="headerlink" title="平台架构"></a>平台架构</h3><p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923201228365.png" alt="image-20220923201228365"></p>
+<p>IoCM：iot联接管理模块，是平台最重要的模块，支持联接状态管理和控制命令转发</p>
+<p>DM Server：设备管理服务器，物联网管理和升级</p>
+<p>Rule Engine：规则引擎，用户设定规则满足业务需求</p>
+<p>MongoDB：用户信息数据库</p>
+<p>CIG：云网关</p>
+<p>南向的终端设备可以通过CIG的协议适配连接平台</p>
+<p>平台通过API Server接入北向的iot应用服务器</p>
+<p>业务流程：</p>
+<p><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20220923201805426.png" alt="image-20220923201805426"></p>
+<h3 id="NB-iot"><a href="#NB-iot" class="headerlink" title="NB-iot"></a>NB-iot</h3><p>是一项基于窄带的通信技术</p>
+<p>HSS归属用户服务器：存储用户信息的核心数据库，主要用来保存用户签约信息</p>
+<p>EPC核心网：HSS归属用户服务器，MME信令处理部分，PGW：PDN网关，SGW服务网关</p>
+<p>应用层：web界面</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：iot边缘计算</li>
+        <li>本文作者：HaoHao Guo</li>
+        <li>创建时间：2022-10-23 21:55:14</li>
+        <li>
+            本文链接：https://gwzone.cn/articles/2022/10/23/iot/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97/">#边缘计算</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/articles/2022/09/14/tow/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Git使用</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div id="gitalk-container"></div>
+    <script data-pjax
+            src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+    <script data-pjax>
+
+        function loadGitalk() {
+            let __gitalk__pathname = decodeURI(location.pathname);
+            const __gitalk__pathnameLength = __gitalk__pathname.length;
+            const __gitalk__pathnameMaxLength = 50;
+            if (__gitalk__pathnameLength > __gitalk__pathnameMaxLength) {
+                __gitalk__pathname = __gitalk__pathname.substring(0, __gitalk__pathnameMaxLength - 3) + '...';
+            }
+
+            try {
+                Gitalk && new Gitalk({
+                    clientID: '10b7b95bac310f939620',
+                    clientSecret: '41605166568c99475e0cff70c5a67caaccece045',
+                    repo: 'comment',
+                    owner: 'Accerss',
+                    admin: ['Accerss'],
+                    id: __gitalk__pathname,
+                    language: 'zh-CN'
+                }).render('gitalk-container');
+
+            } catch (e) {
+                window.Gitalk = null;
+            }
+        }
+
+        if ('true') {
+            const loadGitalkTimeout = setTimeout(() => {
+                loadGitalk();
+                clearTimeout(loadGitalkTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadGitalk);
+        }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">HaoHao Guo</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A8%B3%E5%AE%9A%E5%8F%AF%E9%9D%A0%E7%9A%84%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF"><span class="nav-number">1.</span> <span class="nav-text">稳定可靠的通信技术</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF"><span class="nav-number">1.1.</span> <span class="nav-text">有线通信技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%BF%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF"><span class="nav-number">1.2.</span> <span class="nav-text">无线通信技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lpwa%E4%BD%8E%E5%8A%9F%E8%80%97%E5%B9%BF%E5%9F%9F%E7%BD%91"><span class="nav-number">1.3.</span> <span class="nav-text">lpwa低功耗广域网</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#OceanConnect"><span class="nav-number">2.</span> <span class="nav-text">OceanConnect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MQTT%E5%92%8CHTTP"><span class="nav-number">2.1.</span> <span class="nav-text">MQTT和HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%AF%94"><span class="nav-number">2.2.</span> <span class="nav-text">对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84"><span class="nav-number">2.3.</span> <span class="nav-text">平台架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NB-iot"><span class="nav-number">2.4.</span> <span class="nav-text">NB-iot</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":250,"height":500},"mobile":{"show":false},"log":false});</script></body>
+</html>
