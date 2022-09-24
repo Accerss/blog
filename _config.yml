@@ -122,10 +122,10 @@ live2d:
     use: live2d-widget-model-hijiki
   display:
     position: left
-    width: 250
-    height: 500
+    width: 300
+    height: 600
   mobile:
-    show: false
+    show: true
 
 
 # Search
