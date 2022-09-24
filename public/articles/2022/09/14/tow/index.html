@@ -268,7 +268,12 @@
             <h1 id="Git使用"><a href="#Git使用" class="headerlink" title="Git使用"></a>Git使用</h1><p><strong>Git Bash</strong>：Unix与Linux风格的命令行，使用最多，推荐最多<br><strong>Git CMD</strong>：Windows风格的命令行<br><strong>Git GUI</strong>：图形界面的Git，不建议初学者使用，尽量先熟悉常用命令<br>所有的配置文件，其实都保存在本地！<br>查看配置 git config -l</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#查看系统config</span><br><span class="line">git config --system --list</span><br><span class="line">　　</span><br><span class="line">#查看当前用户（global）配置</span><br><span class="line">git config --global  --lis</span><br></pre></td></tr></table></figure>
 
-<h2 id="三个区域"><a href="#三个区域" class="headerlink" title="三个区域"></a>三个区域</h2><p>Git本地有三个工作区域：工作目录（Working Directory）、暂存区(Stage&#x2F;Index)、资源库(Repository或Git Directory)。如果在加上远程的git仓库(Remote Directory)就可以分为四个工作区域。文件在这四个区域之间的转换关系如下：<br><img src="https://gwzone.oss-cn-beijing.aliyuncs.com/markdown/git/001.png" alt="图片"><br><strong>Workspace</strong>：工作区，就是你平时存放项目代码的地方</p>
+<h2 id="三个区域"><a href="#三个区域" class="headerlink" title="三个区域"></a>三个区域</h2><p>Git本地有三个工作区域：工作目录（Working Directory）、暂存区(Stage&#x2F;Index)、资源库(Repository或Git Directory)。如果在加上远程的git仓库(Remote Directory)就可以分为四个工作区域。文件在这四个区域之间的转换关系如下：<br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="https://gwzone.oss-cn-beijing.aliyuncs.com/markdown/git/001.png"
+                      alt="图片"
+                ><br><strong>Workspace</strong>：工作区，就是你平时存放项目代码的地方</p>
 <p><strong>Index &#x2F; Stage</strong>：暂存区，用于临时存放你的改动，事实上它只是一个文件，保存即将提交到文件列表信息</p>
 <p><strong>Repository</strong>：仓库区（或本地仓库），就是安全存放数据的位置，这里面有你提交到所有版本的数据。其中HEAD指向最新放入仓库的版本</p>
 <p><strong>Remote</strong>：远程仓库，托管代码的服务器，可以简单的认为是你项目组中的一台电脑用于远程数据交换</p>
