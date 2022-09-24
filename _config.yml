@@ -15,7 +15,7 @@ timezone: ''
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://gwzone.cn/
 ## permalink: :year/:month/:day/:title/
-permalink: archives/:year/:month/:abbrlink.html
+permalink: articles/:year/:month/:day/:name/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -104,3 +104,25 @@ theme: keep
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# ---------------------------------------------------------------------------------------
+# Model settings
+# https://huaji8.top/post/live2d-plugin-2.0/
+# installed hijiki hibiki
+# ---------------------------------------------------------------------------------------
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-hijiki
+  display:
+    position: left
+    width: 250
+    height: 500
+  mobile:
+    show: true
