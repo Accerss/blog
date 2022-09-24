@@ -1,0 +1,68 @@
+diff --git a/node_modules/hexo-theme-keep/layout/layout.ejs b/node_modules/hexo-theme-keep/layout/layout.ejs
+index c4d7925..84849a1 100644
+--- a/node_modules/hexo-theme-keep/layout/layout.ejs
++++ b/node_modules/hexo-theme-keep/layout/layout.ejs
+@@ -4,5 +4,7 @@
+ <body>
+ <%- body %>
+ <%- partial('_partial/scripts') %>
++<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
++<script type = "text/javascript" src="/js/click.js"></script>
+ </body>
+ </html>
+diff --git a/node_modules/hexo-theme-keep/source/css/my/mouse.styl b/node_modules/hexo-theme-keep/source/css/my/mouse.styl
+new file mode 100644
+index 0000000..37ccfad
+--- /dev/null
++++ b/node_modules/hexo-theme-keep/source/css/my/mouse.styl
+@@ -0,0 +1,6 @@
++body {
++	cursor: url(https://cdn.jsdelivr.net/gh/kaix2301/pictures/img202201071208706.cur), auto;
++}
++a {
++	cursor: url(https://cdn.jsdelivr.net/gh/kaix2301/pictures/img202201071205091.cur), auto!important;
++}
+\ No newline at end of file
+diff --git a/node_modules/hexo-theme-keep/source/css/style.styl b/node_modules/hexo-theme-keep/source/css/style.styl
+index dea0030..e1be39f 100644
+--- a/node_modules/hexo-theme-keep/source/css/style.styl
++++ b/node_modules/hexo-theme-keep/source/css/style.styl
+@@ -26,3 +26,4 @@
+ @import "layout/category-content.styl"
+ @import "layout/tag-content.styl"
+ @import "layout/_partial/tagcloud.styl"
++@import "my/mouse.styl"
+\ No newline at end of file
+diff --git a/node_modules/hexo-theme-keep/source/js/click.js b/node_modules/hexo-theme-keep/source/js/click.js
+new file mode 100644
+index 0000000..9842e37
+--- /dev/null
++++ b/node_modules/hexo-theme-keep/source/js/click.js
+@@ -0,0 +1,26 @@
++/* 社会主义核心价值观效果 */
++var a_idx = 0;
++jQuery(document).ready(function ($) {
++  $("body").click(function (e) {
++    var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正", "法治", "爱国", "敬业", "诚信", "友善");
++    var $i = $("<span/>").text(a[a_idx]);
++    a_idx = (a_idx + 1) % a.length;
++    var x = e.pageX,
++      y = e.pageY;
++    $i.css({
++      "z-index": 100000000,
++      "top": y - 20,
++      "left": x,
++      "position": "absolute",
++      "font-weight": "bold",
++      "color": "#ff6651"
++    });
++    $("body").append($i);
++    $i.animate({
++      "top": y - 180,
++      "opacity": 0
++    }, 1500, function () {
++      $i.remove();
++    });
++  });
++});
+\ No newline at end of file
