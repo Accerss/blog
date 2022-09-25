@@ -123,7 +123,7 @@ live2d:
   display:
     position: left
     width: 300
-    height: 450
+    height: 350
   mobile:
     show: true
 
