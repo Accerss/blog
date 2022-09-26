@@ -3,7 +3,6 @@ title: iot边缘计算
 date: 2022-10-23 21:55:14
 tags: [边缘计算]
 categories: [物联网]
-sticky: 99
 ---
 ## 稳定可靠的通信技术
 
