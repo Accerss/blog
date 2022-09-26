@@ -19,7 +19,7 @@ Git 子模块允许你将一个 Git 仓库作为另一个 Git 仓库的子目录
 #### 添加子模块
 
 在主仓库执行 `git submoudle add <url> <repo_name>`，执行后会在主仓库下创建一个 `repo_name` 目录存放子项目；并会创建一个 `.git` 隐藏文件
-
+ 
 ```bash
 git submoudle add github.com/common.git src/common
 ```

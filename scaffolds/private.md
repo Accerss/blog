@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags:
+tags: 
 categories: 
 password: 
 abstract: 这里有东西被加密了，需要输入密码查看哦。

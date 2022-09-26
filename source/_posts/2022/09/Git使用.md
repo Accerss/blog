@@ -18,7 +18,7 @@ git config --system --list
 #查看当前用户（global）配置
 git config --global  --lis
 ```
-
+ 
 ## 三个区域
 Git本地有三个工作区域：工作目录（Working Directory）、暂存区(Stage/Index)、资源库(Repository或Git Directory)。如果在加上远程的git仓库(Remote Directory)就可以分为四个工作区域。文件在这四个区域之间的转换关系如下：
 ![图片](https://gwzone.oss-cn-beijing.aliyuncs.com/markdown/git/001.png)
