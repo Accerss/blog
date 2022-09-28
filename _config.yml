@@ -128,6 +128,9 @@ live2d:
     show: true
 
 
+# 资源压缩
+all_minifier: true
+
 # Search
 ## See: https://github.com/theme-next/hexo-generator-searchdb
 search:
