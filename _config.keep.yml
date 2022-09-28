@@ -6,7 +6,8 @@ base_info:
   author: HaoHao Guo
   url: https://gwzone.cn/
   # Logo image (You can use local image, image external link or don’t fill)
-  logo_img: https://gwzone.oss-cn-beijing.aliyuncs.com/blog/loge.jpg
+  # logo_img: https://gwzone.oss-cn-beijing.aliyuncs.com/blog/loge.jpg
+  logo_img: /images/logo.png
 
 # ---------------------------------------------------------------------------------------
 # Theme style settings
@@ -16,10 +17,12 @@ style:
   primary_color: "#0066CC"
 
   # Avatar (You can use local image or image external link)
-  avatar: https://gwzone.oss-cn-beijing.aliyuncs.com/user/avatar.png
+  # avatar: https://gwzone.oss-cn-beijing.aliyuncs.com/user/avatar.png
+  avatar: /images/avatar.png
 
   # Favicon (You can use local image or image external link)
-  favicon: https://gwzone.oss-cn-beijing.aliyuncs.com/blog/favicon.png
+  # favicon: https://gwzone.oss-cn-beijing.aliyuncs.com/blog/favicon.png
+  favicon: /images/favicon.png
 
   # Article image align position, value: left | center
   article_img_align: left
