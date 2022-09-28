@@ -1,8 +1,8 @@
 ---
 title: Git子模块
 date: 2022-09-24 19:25:51
-tags: [子模块]
-categories: [Git]
+tags: [Github]
+categories: [常用工具]
 ---
 # [Git 子模块](https://www.cnblogs.com/renjt1991/p/15925259.html)
 

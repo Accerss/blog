@@ -1,8 +1,8 @@
 ---
 title: Lambda表达式
 date: 2022-09-28 21:07:45
-tags: [tip]  
-categories: [JAVA基础]
+tags: [Lambda]  
+categories: [JAVA,基础知识]
 ---
 # Lambda表达式
 

@@ -1,8 +1,8 @@
 ---
 title: Hello World
 date: 2022-09-1 08:00:00
-tags: [Hello]
-categories: [World]
+tags: 
+categories: 
 password: hello
 abstract: 这里有东西被加密了，需要输入密码查看哦。
 message: 您好，这里需要密码。
