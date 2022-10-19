@@ -4,11 +4,8 @@ date: 2022-10-19 23:48:46
 tags: [BPMN]
 categories: [笔记]
 ---
-最新Flowable工作流教程
-
-> lecture：邓澎波
-
-
+# flowable高级篇
+> lecture：波波老师
 
 # 一、任务分配和流程变量
 

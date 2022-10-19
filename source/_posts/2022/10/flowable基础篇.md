@@ -4,8 +4,8 @@ date: 2022-10-19 23:44:41
 tags: [BPMN]
 categories: [笔记]
 ---
-# 最新Flowable工作流教程
-
+# flowable基础篇
+> Lecture：波波老师
 
 
 # 一、Flowable介绍

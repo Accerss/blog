@@ -5,10 +5,7 @@ tags: [BPMN]
 categories: [笔记]
 ---
 # Flowable实战篇
-
 > lecture：波波老师
-
-
 
 # 一、Flowable整合SpringBoot
 
