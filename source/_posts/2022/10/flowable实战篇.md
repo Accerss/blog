@@ -1,7 +1,7 @@
 ---
 title: flowable实战篇
-date: 2022-10-19 23:49:48
-tags: [BPMN]
+date: 2022-10-19 23:41:48
+tags: [BPMN,Flowable]
 categories: [笔记]
 ---
 # Flowable实战篇

@@ -1,7 +1,7 @@
 ---
 title: flowable进阶篇
-date: 2022-10-19 23:51:58
-tags: [BPMN]
+date: 2022-10-19 23:43:58
+tags: [BPMN,Flowable]
 categories: [笔记]
 ---
 # Flowable进阶篇

@@ -1,7 +1,7 @@
 ---
 title: flowable基础篇
-date: 2022-10-19 23:44:41
-tags: [BPMN]
+date: 2022-10-19 23:50:41
+tags: [BPMN,Flowable]
 categories: [笔记]
 ---
 # flowable基础篇
