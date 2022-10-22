@@ -13,7 +13,7 @@ categories: [笔记]
 
 ## 1.流程图绘制
 
-&emsp;&emsp;多人会签是指一个任务需要多个人来处理，案例讲解
+多人会签是指一个任务需要多个人来处理，案例讲解
 
 ![image-20220402092950976](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220402092950976.png)
 
@@ -150,7 +150,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 ### 3.2 启动流程
 
-&emsp;&emsp;在启动流程实例的时候，我们需要设置相关的参数，在流程定义的时候设置的persons在此处我们就需要设置了，设置为Arrays.asList("张三","李四","王五","赵六")，这里设置了4个元素，在流程定义里定义了3个，表示只会循环3次，启动流程后，在Task中可以看到只有3个任务
+在启动流程实例的时候，我们需要设置相关的参数，在流程定义的时候设置的persons在此处我们就需要设置了，设置为Arrays.asList("张三","李四","王五","赵六")，这里设置了4个元素，在流程定义里定义了3个，表示只会循环3次，启动流程后，在Task中可以看到只有3个任务
 
 ```java
     @Test
@@ -175,7 +175,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 ### 3.3 会签处理任务
 
-&emsp;&emsp;启动流程后我们发下在Task中产生了3条任务，我们先通过TaskService来完成其中一个任务，设置一个标志flag为false，来控制会签还没有结束，同时Task中另外两个任务还在
+启动流程后我们发下在Task中产生了3条任务，我们先通过TaskService来完成其中一个任务，设置一个标志flag为false，来控制会签还没有结束，同时Task中另外两个任务还在
 
 ```java 
     @Test
@@ -235,7 +235,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 
 
-&emsp;&emsp;Flowable提供了一种简便灵活的方式，用来为业务流程中的人工步骤添加表单。 有两种使用表单的方法：使用（由表单设计器创建的）表单定义的内置表单渲染，以及外部表单渲染。 使用外部表单渲染时，可以使用（自Explorer web应用V5版本支持的）表单参数；也可以使用表单key定义，引用外部的、使用自定义代码解析的表单。
+Flowable提供了一种简便灵活的方式，用来为业务流程中的人工步骤添加表单。 有两种使用表单的方法：使用（由表单设计器创建的）表单定义的内置表单渲染，以及外部表单渲染。 使用外部表单渲染时，可以使用（自Explorer web应用V5版本支持的）表单参数；也可以使用表单key定义，引用外部的、使用自定义代码解析的表单。
 
 ## 1.流程绘制
 
@@ -267,7 +267,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 ### 2.1 部署流程
 
-&emsp;&emsp;流程图绘制好之后我们就可以直接来部署这个流程了
+流程图绘制好之后我们就可以直接来部署这个流程了
 
 ```java
 /**
@@ -290,7 +290,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 ### 2.2 查看流程关联的表单信息
 
-&emsp;&emsp;我们部署了一个流程后，如果不清楚之前关联了什么表单，表单中有哪些字段，属性是什么？这时我们可以通过定义的流程查询出对应的form表单信息
+我们部署了一个流程后，如果不清楚之前关联了什么表单，表单中有哪些字段，属性是什么？这时我们可以通过定义的流程查询出对应的form表单信息
 
 ```java
     @Test
@@ -320,7 +320,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 ### 2.3 启动流程
 
-&emsp;&emsp;启动流程的方式有两种，一种是正常的通过RuntimeService来启动，还有一种就是通过FormService来启动，具体代码如下：
+启动流程的方式有两种，一种是正常的通过RuntimeService来启动，还有一种就是通过FormService来启动，具体代码如下：
 
 ```java
     /**
@@ -359,7 +359,7 @@ public class MulitiInstanceCompleteTask implements Serializable {
 
 ### 2.4 保存表单数据
 
-&emsp;&emsp;在Task执行之前我们也可以保存表单数据到Task对应的Form表单中。
+在Task执行之前我们也可以保存表单数据到Task对应的Form表单中。
 
 ```java
 /**
@@ -417,7 +417,7 @@ formProperty.getValue() = 20220407
 
 ### 2.6 完成任务
 
-&emsp;&emsp;现在就可以通过指派人或者任务编号来完成当前任务,当然这时我们还是可以修改form表单中的数据
+现在就可以通过指派人或者任务编号来完成当前任务,当然这时我们还是可以修改form表单中的数据
 
 ```java
     /**
@@ -438,7 +438,7 @@ formProperty.getValue() = 20220407
 
 ### 2.7 查看完成的Task的表单数据
 
-&emsp;&emsp;一个Task完成后，如果我们想要查看之前的表单的历史数据可以通过如下的方法来实现
+一个Task完成后，如果我们想要查看之前的表单的历史数据可以通过如下的方法来实现
 
 ```java
     /**
@@ -468,11 +468,11 @@ formProperty.getValue() = 20220407
 
 ## 3.外置表单
 
-&emsp;&emsp;我们会发现在上面的例子中通过内置的表单，我们需要在每个节点都设置一份表单数据，不是很灵活，这时我们可以单独创建一份表单，然后在对应的节点做应用就可以了。
+我们会发现在上面的例子中通过内置的表单，我们需要在每个节点都设置一份表单数据，不是很灵活，这时我们可以单独创建一份表单，然后在对应的节点做应用就可以了。
 
 ### 3.1 创建表单
 
-&emsp;&emsp;表单定义文件是以.form为后缀， 内容格式为Json格式
+表单定义文件是以.form为后缀， 内容格式为Json格式
 
 ```json
 {
@@ -504,13 +504,13 @@ formProperty.getValue() = 20220407
 }
 ```
 
-&emsp;&emsp;注意：上面文件中的key是唯一标识，我们在表单处理的时候是根据这个key来获取的哦，
+注意：上面文件中的key是唯一标识，我们在表单处理的时候是根据这个key来获取的哦，
 
 
 
 ### 3.2 然后创建流程文件
 
-&emsp;&emsp;流程文件还是以我们上面的案例来演示，主要是对表单这块做了调整
+流程文件还是以我们上面的案例来演示，主要是对表单这块做了调整
 
 ![image-20220403231037718](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220403231037718.png)
 
@@ -609,7 +609,7 @@ form表单通过引用来关联
 
 ### 3.3 部署流程
 
-&emsp;&emsp;接下来我们先部署流程
+接下来我们先部署流程
 
 ```java
     /**
@@ -631,7 +631,7 @@ form表单通过引用来关联
 
 ### 3.4 部署表单
 
-&emsp;&emsp;这个步骤很重要，我们需要单独把我们的form文件部署到流程中。
+这个步骤很重要，我们需要单独把我们的form文件部署到流程中。
 
 ```java
     @Autowired
@@ -652,7 +652,7 @@ form表单通过引用来关联
     }
 ```
 
-&emsp;&emsp;我们需要通过FormRepositoryService来部署我们的form表单。对应的会在这几种表中生成对应的数据
+我们需要通过FormRepositoryService来部署我们的form表单。对应的会在这几种表中生成对应的数据
 
 Form部署表：
 
@@ -676,7 +676,7 @@ Form资源表：
 
 ### 3.5 启动任务
 
-&emsp;&emsp;带有外置Form表单的流程我们需要通过`runtimeService.startProcessInstanceWithForm`来启动
+带有外置Form表单的流程我们需要通过`runtimeService.startProcessInstanceWithForm`来启动
 
 ```java
     /**
@@ -709,7 +709,7 @@ Form资源表：
 
 ### 3.6 查看任务表单数据
 
-&emsp;&emsp;在任务处理之前我们可以查看表单的对应信息。
+在任务处理之前我们可以查看表单的对应信息。
 
 ```java
     /**
@@ -762,7 +762,7 @@ Form资源表：
 
 ### 3.7 完成任务
 
-&emsp;&emsp;在外置表单的场景中我们需要通过`taskService.completeTaskWithForm`来完成表单的任务
+在外置表单的场景中我们需要通过`taskService.completeTaskWithForm`来完成表单的任务
 
 ```java
     /**
@@ -807,7 +807,7 @@ Form资源表：
 
 ## 1.串行的回退
 
-&emsp;&emsp;我们先从最简单的串行流程来分析，案例如下
+我们先从最简单的串行流程来分析，案例如下
 
 ![image-20220404221942030](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220404221942030.png)
 
@@ -874,7 +874,7 @@ Form资源表：
 </definitions>
 ```
 
-&emsp;&emsp;上面的流程就是一个非常简单的串行任务，定义了4个用户任务，指派的处理人分别是`user1`,`user2`,`user3`,`user4`.在流程的执行过程中我们可以通过回退来演示具体的效果。首先来部署流程
+上面的流程就是一个非常简单的串行任务，定义了4个用户任务，指派的处理人分别是`user1`,`user2`,`user3`,`user4`.在流程的执行过程中我们可以通过回退来演示具体的效果。首先来部署流程
 
 ```java
     /**
@@ -1001,7 +1001,7 @@ void rollbackTask(){
 
 
 
-&emsp;&emsp;可以看到任务又回到了user1处。也就是在串行的流程中，我们可以回退到任意的用户节点，当然这个串行也包括多人会签和排他网关节点。当然在回退的时候我们还可以使用`moveActivityIdTo(String currentActivityId,String newActivityId)`这个方法来处理。
+可以看到任务又回到了user1处。也就是在串行的流程中，我们可以回退到任意的用户节点，当然这个串行也包括多人会签和排他网关节点。当然在回退的时候我们还可以使用`moveActivityIdTo(String currentActivityId,String newActivityId)`这个方法来处理。
 
 
 
@@ -1009,7 +1009,7 @@ void rollbackTask(){
 
 ## 2.并行的回退
 
-&emsp;&emsp;接下来我们在并行的场景中来看看各种回退的场景。具体案例流程如下：
+接下来我们在并行的场景中来看看各种回退的场景。具体案例流程如下：
 
 ![image-20220405111325145](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220405111325145.png)
 
@@ -1112,10 +1112,10 @@ void rollbackTask(){
 </definitions>
 ```
 
-&emsp;&emsp;先部署流程，然后启动并运行到并行流程的节点如下的位置
+先部署流程，然后启动并运行到并行流程的节点如下的位置
 ![image-20220405111459624](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220405111459624.png)
 
-&emsp;&emsp;然后我们可以尝试从`业务副总`处回退到`用户审批01`处，看看该处理应该要如何实现。
+然后我们可以尝试从`业务副总`处回退到`用户审批01`处，看看该处理应该要如何实现。
 
 ![image-20220405111926713](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220405111926713.png)
 
@@ -1187,7 +1187,7 @@ void rollbackTask(){
 
 ## 3.子流程回退
 
-&emsp;&emsp;最后我们来看看带有子流程的场景下如果有回退的情况应该要如何来处理,案例如下：
+最后我们来看看带有子流程的场景下如果有回退的情况应该要如何来处理,案例如下：
 
 ![image-20220405134220482](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220405134220482.png)
 

@@ -10,7 +10,7 @@ categories: [笔记]
 
 # 一、Flowable介绍
 
-&emsp;&emsp;Flowable是BPMN的一个基于java的软件实现，不过Flowable不仅仅包括BPMN，还有DMN决策表和CMMN Case管理引擎，并且有自己的用户管理、微服务API等一系列功能，是一个服务平台。
+Flowable是BPMN的一个基于java的软件实现，不过Flowable不仅仅包括BPMN，还有DMN决策表和CMMN Case管理引擎，并且有自己的用户管理、微服务API等一系列功能，是一个服务平台。
 
 ![image-20220317101115398](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn\image-20220317101115398.png)
 
@@ -24,7 +24,7 @@ categories: [笔记]
 
 ## 1.创建ProcessEngine
 
-&emsp;&emsp;创建一个基本的maven工程，可以是Eclipse也可以是其他IDEA。然后添加两个依赖
+创建一个基本的maven工程，可以是Eclipse也可以是其他IDEA。然后添加两个依赖
 
 * Flowable流程引擎。使我们可以创建一个ProcessEngine流程引擎对象，并访问Flowable API。
 * 一个是MySQL的数据库驱动
@@ -44,7 +44,7 @@ categories: [笔记]
 </dependency>
 ```
 
-&emsp;&emsp;然后创建一个普通的Java类，添加对应的main方法，首先要做的是初始化**ProcessEngine**流程引擎实例。这是一个线程安全的对象，因此通常只需要在一个应用中初始化一次。 *ProcessEngine*由**ProcessEngineConfiguration**实例创建。该实例可以配置与调整流程引擎的设置。 通常使用一个配置XML文件创建*ProcessEngineConfiguration*，但是（像在这里做的一样）也可以编程方式创建它。 *ProcessEngineConfiguration*所需的最小配置，是数据库JDBC连接：
+然后创建一个普通的Java类，添加对应的main方法，首先要做的是初始化**ProcessEngine**流程引擎实例。这是一个线程安全的对象，因此通常只需要在一个应用中初始化一次。 *ProcessEngine*由**ProcessEngineConfiguration**实例创建。该实例可以配置与调整流程引擎的设置。 通常使用一个配置XML文件创建*ProcessEngineConfiguration*，但是（像在这里做的一样）也可以编程方式创建它。 *ProcessEngineConfiguration*所需的最小配置，是数据库JDBC连接：
 
 ```java
 public static void main(String[] args) {
@@ -58,11 +58,11 @@ public static void main(String[] args) {
 }
 ```
 
-&emsp;&emsp;注意在mysql8.0中执行可能出现如下的错误
+注意在mysql8.0中执行可能出现如下的错误
 
 ![image-20220316093416477](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316093416477.png)
 
-&emsp;&emsp;出现这种情况只需要在mysql的连接字符串中添加上nullCatalogMeansCurrent=true，设置为只查当前连接的schema库即可。
+出现这种情况只需要在mysql的连接字符串中添加上nullCatalogMeansCurrent=true，设置为只查当前连接的schema库即可。
 
 ```java
     public static void main(String[] args) {
@@ -76,7 +76,7 @@ public static void main(String[] args) {
     }
 ```
 
-&emsp;&emsp;然后应用运行没有问题，但也没有在控制台提供有用的信息，只有一条消息提示日志没有正确配置。Flowable使用[SLF4J](http://www.slf4j.org/)作为内部日志框架。在这个例子中，我们使用log4j作为SLF4J的实现。因此在pom.xml文件中添加下列依赖：
+然后应用运行没有问题，但也没有在控制台提供有用的信息，只有一条消息提示日志没有正确配置。Flowable使用[SLF4J](http://www.slf4j.org/)作为内部日志框架。在这个例子中，我们使用log4j作为SLF4J的实现。因此在pom.xml文件中添加下列依赖：
 
 ```xml
 <dependency>
@@ -91,7 +91,7 @@ public static void main(String[] args) {
 </dependency>
 ```
 
-&emsp;&emsp;Log4j需要一个配置文件。在*src/main/resources*文件夹下添加*log4j.properties*文件，并写入下列内容：
+Log4j需要一个配置文件。在*src/main/resources*文件夹下添加*log4j.properties*文件，并写入下列内容：
 
 ```properties
 log4j.rootLogger=DEBUG, CA
@@ -101,31 +101,31 @@ log4j.appender.CA.layout=org.apache.log4j.PatternLayout
 log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %m%n
 ```
 
-&emsp;&emsp;重新运行应用。应该可以看到关于引擎启动与创建数据库表结构的提示日志：
+重新运行应用。应该可以看到关于引擎启动与创建数据库表结构的提示日志：
 
 ![image-20220316093922199](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316093922199.png)
 
-&emsp;&emsp;同时可以看到创建了相关的表结构在数据库中
+同时可以看到创建了相关的表结构在数据库中
 
 ![image-20220316093957662](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316093957662.png)
 
-&emsp;&emsp;这样就得到了一个启动可用的流程引擎。接下来为它提供一个流程！
+这样就得到了一个启动可用的流程引擎。接下来为它提供一个流程！
 
 
 
 ## 2.部署流程定义
 
-&emsp;&emsp;接下来我们构建一个非常简单的请假流程，Flowable引擎需要流程定义为BPMN 2.0格式，这是一个业界广泛接受的XML标准。 在Flowable术语中，我们将其称为一个**流程定义(process definition)**。一个*流程定义*可以启动多个**流程实例(process instance)**。*流程定义*可以看做是重复执行流程的蓝图。 在这个例子中，*流程定义*定义了请假的各个步骤，而一个*流程实例*对应某个雇员提出的一个请假申请。
+接下来我们构建一个非常简单的请假流程，Flowable引擎需要流程定义为BPMN 2.0格式，这是一个业界广泛接受的XML标准。 在Flowable术语中，我们将其称为一个**流程定义(process definition)**。一个*流程定义*可以启动多个**流程实例(process instance)**。*流程定义*可以看做是重复执行流程的蓝图。 在这个例子中，*流程定义*定义了请假的各个步骤，而一个*流程实例*对应某个雇员提出的一个请假申请。
 
-&emsp;&emsp;BPMN 2.0存储为XML，并包含可视化的部分：使用标准方式定义了每个步骤类型（人工任务，自动服务调用，等等）如何呈现，以及如何互相连接。这样BPMN 2.0标准使技术人员与业务人员能用双方都能理解的方式交流业务流程。
+BPMN 2.0存储为XML，并包含可视化的部分：使用标准方式定义了每个步骤类型（人工任务，自动服务调用，等等）如何呈现，以及如何互相连接。这样BPMN 2.0标准使技术人员与业务人员能用双方都能理解的方式交流业务流程。
 
-&emsp;&emsp;我们要使用的流程定义为：
+我们要使用的流程定义为：
 
 ![getting.started.bpmn.process](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/getting.started.bpmn.process.png)
 
 
 
-&emsp;&emsp;流程定义说明：
+流程定义说明：
 
 * 我们假定启动流程需要提供一些信息，例如雇员名字、请假时长以及说明。当然，这些可以单独建模为流程中的第一步。 但是如果将它们作为流程的“输入信息”，就能保证只有在实际请求时才会建立一个流程实例。否则（将提交作为流程的第一步），用户可能在提交之前改变主意并取消，但流程实例已经创建了。 在某些场景中，就可能影响重要的指标（例如启动了多少申请，但还未完成），取决于业务目标。
 * 左侧的圆圈叫做**启动事件(start event)**。这是一个流程实例的起点。
@@ -136,11 +136,11 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 
 
 
-&emsp;&emsp;一般来说，这样的*流程定义*使用可视化建模工具建立，如Flowable Designer(Eclipse)或Flowable Web Modeler(Web应用)。但在这里我们直接撰写XML，以熟悉BPMN 2.0及其概念。
+一般来说，这样的*流程定义*使用可视化建模工具建立，如Flowable Designer(Eclipse)或Flowable Web Modeler(Web应用)。但在这里我们直接撰写XML，以熟悉BPMN 2.0及其概念。
 
-&emsp;&emsp;与上面展示的流程图对应的BPMN 2.0 XML在下面显示。请注意这只包含了“流程部分”。如果使用图形化建模工具，实际的XML文件还将包含“可视化部分”，用于描述图形信息，如流程定义中各个元素的坐标（所有的图形化信息包含在XML的*BPMNDiagram*标签中，作为*definitions*标签的子元素）。
+与上面展示的流程图对应的BPMN 2.0 XML在下面显示。请注意这只包含了“流程部分”。如果使用图形化建模工具，实际的XML文件还将包含“可视化部分”，用于描述图形信息，如流程定义中各个元素的坐标（所有的图形化信息包含在XML的*BPMNDiagram*标签中，作为*definitions*标签的子元素）。
 
-&emsp;&emsp;将下面的XML保存在*src/main/resources*文件夹下名为*holiday-request.bpmn20.xml*的文件中。
+将下面的XML保存在*src/main/resources*文件夹下名为*holiday-request.bpmn20.xml*的文件中。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -198,7 +198,7 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 </definitions>
 ```
 
-&emsp;&emsp;现在我们已经有了流程BPMN 2.0 XML文件，下来需要将它***部署(deploy)\***到引擎中。*部署*一个流程定义意味着：
+现在我们已经有了流程BPMN 2.0 XML文件，下来需要将它***部署(deploy)\***到引擎中。*部署*一个流程定义意味着：
 
 * 流程引擎会将XML文件存储在数据库中，这样可以在需要的时候获取它
 * 流程定义转换为内部的、可执行的对象模型，这样使用它就可以启动*流程实例*。
@@ -209,7 +209,7 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 
 
 
-&emsp;&emsp;将流程定义*部署*至Flowable引擎，需要使用*RepositoryService*，其可以从*ProcessEngine*对象获取。使用*RepositoryService*，可以通过XML文件的路径创建一个新的*部署(Deployment)*，并调用*deploy()*方法实际执行：
+将流程定义*部署*至Flowable引擎，需要使用*RepositoryService*，其可以从*ProcessEngine*对象获取。使用*RepositoryService*，可以通过XML文件的路径创建一个新的*部署(Deployment)*，并调用*deploy()*方法实际执行：
 
 ```java
     /**
@@ -238,11 +238,11 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
     }
 ```
 
-&emsp;&emsp;然后执行该方法日志操作成功：
+然后执行该方法日志操作成功：
 
 ![image-20220316100439048](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316100439048.png)
 
-&emsp;&emsp;在后台表结构也可以看到相关的信息
+在后台表结构也可以看到相关的信息
 
 act_re_deployment: 流程定义部署表，每部署一次就增加一条记录
 
@@ -264,7 +264,7 @@ act_ge_bytearray ：流程资源表，流程部署的 bpmn文件和png图片会�
 
 
 
-&emsp;&emsp;我们现在可以通过API查询验证流程定义已经部署在引擎中（并学习一些API）。通过*RepositoryService*创建的*ProcessDefinitionQuery*对象实现。
+我们现在可以通过API查询验证流程定义已经部署在引擎中（并学习一些API）。通过*RepositoryService*创建的*ProcessDefinitionQuery*对象实现。
 
 ```java
 /**
@@ -308,11 +308,11 @@ processDefinition.getDescription() = null
 
 ## 3.启动流程实例
 
-&emsp;&emsp;现在已经在流程引擎中*部署*了流程定义，因此可以使用这个*流程定义*作为“模板”启动*流程实例*。
+现在已经在流程引擎中*部署*了流程定义，因此可以使用这个*流程定义*作为“模板”启动*流程实例*。
 
 ![image-20220316102638015](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316102638015.png)
 
-&emsp;&emsp;要启动流程实例，需要提供一些初始化*流程变量*。一般来说，可以通过呈现给用户的表单，或者在流程由其他系统自动触发时通过REST API，来获取这些变量。在这个例子里，我们简化直接在代码中定义了，我们使用*RuntimeService*启动一个*流程实例*。
+要启动流程实例，需要提供一些初始化*流程变量*。一般来说，可以通过呈现给用户的表单，或者在流程由其他系统自动触发时通过REST API，来获取这些变量。在这个例子里，我们简化直接在代码中定义了，我们使用*RuntimeService*启动一个*流程实例*。
 
 ```java
     /**
@@ -370,13 +370,13 @@ processDefinition.getDescription() = null
 
 ## 4.查看任务
 
-&emsp;&emsp;上面员工发起了一个请假流程，接下来就会流转到总经理这儿来处理，之前我们没有指定经理这的处理人，我们可以加一个
+上面员工发起了一个请假流程，接下来就会流转到总经理这儿来处理，之前我们没有指定经理这的处理人，我们可以加一个
 
 ![image-20220316110406801](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316110406801.png)
 
 
 
-&emsp;&emsp;然后我们来查看下lisi的任务
+然后我们来查看下lisi的任务
 
 ```java
     /**
@@ -420,13 +420,13 @@ task.getName() = Approve or reject request
 
 ## 5.完成任务
 
-&emsp;&emsp;现在李四这个角色可以来完成当前的任务了
+现在李四这个角色可以来完成当前的任务了
 
 ![image-20220316111124019](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316111124019.png)
 
 
 
-&emsp;&emsp;在此处我们直接解决掉这个请假，然后会走发送拒绝邮件的流程，这块我们需要用到JavaDelegate来触发。
+在此处我们直接解决掉这个请假，然后会走发送拒绝邮件的流程，这块我们需要用到JavaDelegate来触发。
 
 ![image-20220316111253702](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316111253702.png)
 
@@ -487,7 +487,7 @@ public class SendRejectionMail implements JavaDelegate {
 
 ## 6.流程的删除
 
-&emsp;&emsp;有些流程已经没有用了，我们需要删除掉，其实也非常简单
+有些流程已经没有用了，我们需要删除掉，其实也非常简单
 
 ```java
     /**
@@ -515,14 +515,14 @@ public class SendRejectionMail implements JavaDelegate {
 
 ## 7.查看历史信息
 
-&emsp;&emsp;选择使用Flowable这样的流程引擎的原因之一，是它可以自动存储所有流程实例的**审计数据**或**历史数据**。这些数据可以用于创建报告，深入展现组织运行的情况，瓶颈在哪里，等等。
+选择使用Flowable这样的流程引擎的原因之一，是它可以自动存储所有流程实例的**审计数据**或**历史数据**。这些数据可以用于创建报告，深入展现组织运行的情况，瓶颈在哪里，等等。
 
-&emsp;&emsp;例如，如果希望显示流程实例已经执行的时间，就可以从*ProcessEngine*获取*HistoryService*，并创建*历史活动(historical activities)*的查询。在下面的代码片段中，可以看到我们添加了一些额外的过滤条件：
+例如，如果希望显示流程实例已经执行的时间，就可以从*ProcessEngine*获取*HistoryService*，并创建*历史活动(historical activities)*的查询。在下面的代码片段中，可以看到我们添加了一些额外的过滤条件：
 
 - 只选择一个特定流程实例的活动
 - 只选择已完成的活动
 
-&emsp;&emsp;结果按照结束时间排序，代表其执行顺序。
+结果按照结束时间排序，代表其执行顺序。
 
 ```java
 /**
@@ -573,11 +573,11 @@ rejectEnd took 1 milliseconds
 
 ## 1.Eclipse Designer
 
-&emsp;&emsp;Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于图形化地建模、测试与部署BPMN 2.0流程。
+Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于图形化地建模、测试与部署BPMN 2.0流程。
 
 ### 1.1 下载安装Eclipse
 
-&emsp;&emsp;去Eclipse官网下载即可：https://www.eclipse.org/downloads/packages/release 注意2020-09后的版本不再支持jdk8
+去Eclipse官网下载即可：https://www.eclipse.org/downloads/packages/release 注意2020-09后的版本不再支持jdk8
 
 ![image-20220316202904261](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316202904261.png)
 
@@ -585,7 +585,7 @@ rejectEnd took 1 milliseconds
 
 ![image-20220316203036602](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316203036602.png)
 
-&emsp;&emsp;直接启动即可
+直接启动即可
 
 ![image-20220316203111301](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316203111301.png)
 
@@ -599,7 +599,7 @@ rejectEnd took 1 milliseconds
 
 ### 1.2 安装Flowable插件
 
-&emsp;&emsp;然后我们再安装下Flowable的插件，选择**Help → Install New Software**。在下图面板中，点击*Add*按钮，并填写下列字段
+然后我们再安装下Flowable的插件，选择**Help → Install New Software**。在下图面板中，点击*Add*按钮，并填写下列字段
 
 - **Name:** Flowable BPMN 2.0 designer
 - **Location:** http://www.flowable.org/designer/update/
@@ -610,17 +610,17 @@ rejectEnd took 1 milliseconds
 
 
 
-&emsp;&emsp;这种在线更新的方式已经被官网移除了，操作不了
+这种在线更新的方式已经被官网移除了，操作不了
 
 ![image-20220316211319931](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316211319931.png)
 
 
 
-&emsp;&emsp;这时我们就只能通过离线安装的方式来实现了，下载对应的离线文件
+这时我们就只能通过离线安装的方式来实现了，下载对应的离线文件
 
 ![image-20220316211405001](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316211405001.png)
 
-&emsp;&emsp;安装步骤来操作，
+安装步骤来操作，
 
 ![image-20220316211518520](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316211518520.png)
 
@@ -654,17 +654,17 @@ rejectEnd took 1 milliseconds
 
 ### 1.3 创建项目
 
-&emsp;&emsp;然后我们就可以创建一个Flowable Project了
+然后我们就可以创建一个Flowable Project了
 
 ![image-20220316212418899](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316212418899.png)
 
-&emsp;&emsp;然后我们可以在src/mian/resources/ 的目录下创建对应的流程图了
+然后我们可以在src/mian/resources/ 的目录下创建对应的流程图了
 
 ![image-20220316212605146](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316212605146.png)
 
 
 
-&emsp;&emsp;看到如下的界面说明插件安装成功了
+看到如下的界面说明插件安装成功了
 
 ![image-20220316212720767](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316212720767.png)
 
@@ -706,7 +706,7 @@ rejectEnd took 1 milliseconds
 
 ### 1.5 部署流程
 
-&emsp;&emsp;首先在Eclipse中生成bar文件，选中项目然后鼠标右击
+首先在Eclipse中生成bar文件，选中项目然后鼠标右击
 
 ![image-20220316215805503](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316215805503.png)
 
@@ -894,14 +894,14 @@ public class Test02 {
 
 ## 2.Flowable UI应用
 
-&emsp;&emsp;Flowable提供了几个web应用，用于演示及介绍Flowable项目提供的功能：
+Flowable提供了几个web应用，用于演示及介绍Flowable项目提供的功能：
 
 - Flowable IDM: 身份管理应用。为所有Flowable UI应用提供单点登录认证功能，并且为拥有IDM管理员权限的用户提供了管理用户、组与权限的功能。
 - Flowable Modeler: 让具有建模权限的用户可以创建流程模型、表单、选择表与应用定义。
 - Flowable Task: 运行时任务应用。提供了启动流程实例、编辑任务表单、完成任务，以及查询流程实例与任务的功能。
 - Flowable Admin: 管理应用。让具有管理员权限的用户可以查询BPMN、DMN、Form及Content引擎，并提供了许多选项用于修改流程实例、任务、作业等。管理应用通过REST API连接至引擎，并与Flowable Task应用及Flowable REST应用一同部署。
 
-&emsp;&emsp;所有其他的应用都需要Flowable IDM提供认证。每个应用的WAR文件可以部署在相同的servlet容器（如Apache Tomcat）中，也可以部署在不同的容器中。由于每个应用使用相同的cookie进行认证，因此应用需要运行在相同的域名下。
+所有其他的应用都需要Flowable IDM提供认证。每个应用的WAR文件可以部署在相同的servlet容器（如Apache Tomcat）中，也可以部署在不同的容器中。由于每个应用使用相同的cookie进行认证，因此应用需要运行在相同的域名下。
 
 
 
@@ -923,7 +923,7 @@ Tomcat目录：
 
 ### 2.2 启动服务
 
-&emsp;&emsp;启动Tomcat服务，执行startup.bat文件
+启动Tomcat服务，执行startup.bat文件
 
 ![image-20220318102325924](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220318102325924.png)
 
@@ -941,7 +941,7 @@ Tomcat目录：
 
 ### 2.3 用户管理
 
-&emsp;&emsp;我们先在 `身份管理应用程序` 中创建用户并授权
+我们先在 `身份管理应用程序` 中创建用户并授权
 
 ![image-20220318102707368](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220318102707368.png)
 
@@ -1003,7 +1003,7 @@ Tomcat目录：
 
 ### 2.5 部署流程
 
-&emsp;&emsp;绘制好的流程图，我们只需要一键导出即可
+绘制好的流程图，我们只需要一键导出即可
 
 ![image-20220318103413285](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220318103413285.png)
 
@@ -1025,7 +1025,7 @@ Tomcat目录：
 
 #### 2.6.1 部署流程
 
-&emsp;&emsp;在FlowableUI中提供了演示程序
+在FlowableUI中提供了演示程序
 
 ![image-20220318104517967](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220318104517967.png)
 
@@ -1061,7 +1061,7 @@ Tomcat目录：
 
 #### 2.6.2 启动流程
 
-&emsp;&emsp;发布了应用程序后我们就可以来启动流程了
+发布了应用程序后我们就可以来启动流程了
 
 ![image-20220318105258331](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220318105258331.png)
 
@@ -1115,7 +1115,7 @@ Tomcat目录：
 
 ## 1.表结构讲解
 
-&emsp;&emsp;工作流程的相关操作都是操作存储在对应的表结构中，为了能更好的弄清楚Flowable的实现原理和细节，我们有必要先弄清楚Flowable的相关表结构及其作用。在Flowable中的表结构在初始化的时候会创建五类表结构，具体如下：
+工作流程的相关操作都是操作存储在对应的表结构中，为了能更好的弄清楚Flowable的实现原理和细节，我们有必要先弄清楚Flowable的相关表结构及其作用。在Flowable中的表结构在初始化的时候会创建五类表结构，具体如下：
 
 * **ACT_RE** ：'RE'表示 repository。 这个前缀的表包含了流程定义和流程静态资源 （图片，规则，等等）。
 * **ACT_RU**：'RU'表示 runtime。 这些运行时的表，包含流程实例，任务，变量，异步任务，等运行中的数据。 Flowable只在流程实例执行过程中保存这些数据， 在流程结束时就会删除这些记录。 这样运行时表可以一直很小速度很快。
@@ -1171,7 +1171,7 @@ Tomcat目录：
 
 ### 2.1 硬编码的方式
 
-&emsp;&emsp;我们前面讲解案例的时候是通过ProcessEngineConfiguration这个配置类来加载的。
+我们前面讲解案例的时候是通过ProcessEngineConfiguration这个配置类来加载的。
 
 ```java
 // 配置数据库相关信息 获取 ProcessEngineConfiguration
@@ -1185,7 +1185,7 @@ ProcessEngineConfiguration cfg = new StandaloneProcessEngineConfiguration()
 ProcessEngine processEngine = cfg.buildProcessEngine();
 ```
 
-&emsp;&emsp;这种方式会调用buildProcessEngine()方法，里面的核心代码为：
+这种方式会调用buildProcessEngine()方法，里面的核心代码为：
 
 ![image-20220319113106848](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220319113106848.png)
 
@@ -1199,7 +1199,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
 
 ### 2.2 配置文件
 
-&emsp;&emsp;除了上面的硬编码的方式外，我们还可以在resources目录下创建一个`flowable.cfg.xml`文件，注意这个名称是固定的哦。内容如下：
+除了上面的硬编码的方式外，我们还可以在resources目录下创建一个`flowable.cfg.xml`文件，注意这个名称是固定的哦。内容如下：
 
 ```xml
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -1216,7 +1216,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
 </beans>
 ```
 
-&emsp;&emsp;在上面的配置文件中配置相关的信息。我们在Java代码中就可以简化为：
+在上面的配置文件中配置相关的信息。我们在Java代码中就可以简化为：
 
 ```java
     @Test
@@ -1227,7 +1227,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
     }
 ```
 
-&emsp;&emsp;可以看下getDefaultProcessEngine的源码，在里面最终还是执行了和硬编码一样的代码
+可以看下getDefaultProcessEngine的源码，在里面最终还是执行了和硬编码一样的代码
 
 ```java
     public static ProcessEngine getProcessEngine(String processEngineName) {
@@ -1238,7 +1238,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
     }
 ```
 
-&emsp;&emsp;进入init方法
+进入init方法
 
 ```java
     public static synchronized void init() {
@@ -1286,7 +1286,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
     }
 ```
 
-&emsp;&emsp;在源码中提供了单独使用好整合Spring的配置加载方式。再进入到initProcessEngineFromResource(resource)方法中：
+在源码中提供了单独使用好整合Spring的配置加载方式。再进入到initProcessEngineFromResource(resource)方法中：
 
 ![image-20220319114011806](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220319114011806.png)
 
@@ -1306,7 +1306,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
 
 ### 2.3 自定义配置文件
 
-&emsp;&emsp;最后我们如果要加载自定义名称的配置文件可以通过ProcessEngineConfiguration中的对应构造方法来实现
+最后我们如果要加载自定义名称的配置文件可以通过ProcessEngineConfiguration中的对应构造方法来实现
 
 ```java
     @Test
@@ -1389,13 +1389,13 @@ Activiti的引擎管理类，提供了对Flowable 流程引擎的管理和维护
 
 ## 4.图标介绍
 
-&emsp;&emsp;BPMN 2.0是业务流程建模符号2.0的缩写。它由Business Process Management Initiative这个非营利协会创建并不断发展。作为一种标识，BPMN 2.0是使用一些**符号**来明确业务流程设计流程图的一整套符号规范，它能增进业务建模时的沟通效率。目前BPMN2.0是最新的版本，它用于在BPM上下文中进行布局和可视化的沟通。接下来我们先来了解在流程设计中常见的 符号。
+BPMN 2.0是业务流程建模符号2.0的缩写。它由Business Process Management Initiative这个非营利协会创建并不断发展。作为一种标识，BPMN 2.0是使用一些**符号**来明确业务流程设计流程图的一整套符号规范，它能增进业务建模时的沟通效率。目前BPMN2.0是最新的版本，它用于在BPM上下文中进行布局和可视化的沟通。接下来我们先来了解在流程设计中常见的 符号。
 
 BPMN2.0的**基本符合**主要包含：
 
 ### 4.1 事件图标
 
-&emsp;&emsp;在Flowable中的事件图标启动事件，边界事件,中间事件和结束事件.
+在Flowable中的事件图标启动事件，边界事件,中间事件和结束事件.
 
 ![image-20220320103803308](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220320103803308.png)
 
@@ -1403,13 +1403,13 @@ BPMN2.0的**基本符合**主要包含：
 
 ### 4.2 活动(任务)图标
 
-&emsp;&emsp;活动是工作或任务的一个通用术语。一个活动可以是一个任务，还可以是一个当前流程的子处理流程； 其次，你还可以为活动指定不同的类型。常见活动如下:
+活动是工作或任务的一个通用术语。一个活动可以是一个任务，还可以是一个当前流程的子处理流程； 其次，你还可以为活动指定不同的类型。常见活动如下:
 
 ![image-20220320103929543](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220320103929543.png)
 
 ### 4.3 结构图标
 
-&emsp;&emsp;结构图标可以看做是整个流程活动的结构，一个流程中可以包括子流程。常见的结构有：
+结构图标可以看做是整个流程活动的结构，一个流程中可以包括子流程。常见的结构有：
 
 ![image-20220320104025737](C:\Users\dpb\AppData\Roaming\Typora\typora-user-images\image-20220320104025737.png)
 
@@ -1417,7 +1417,7 @@ BPMN2.0的**基本符合**主要包含：
 
 ### 4.4 网关图标
 
-&emsp;&emsp;网关用来处理决策，有几种常用网关需要了解：
+网关用来处理决策，有几种常用网关需要了解：
 
 ![image-20220320104157816](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220320104157816.png)
 
@@ -1433,7 +1433,7 @@ BPMN2.0的**基本符合**主要包含：
 
 ### 5.1 部署实现
 
-&emsp;&emsp;我们先来看下流程部署的具体过程。代码实现
+我们先来看下流程部署的具体过程。代码实现
 
 ```java
 /**
@@ -1515,7 +1515,7 @@ BPMN2.0的**基本符合**主要包含：
 
 ### 5.3 挂起和激活
 
-&emsp;&emsp;部署的流程默认的状态为激活，如果我们暂时不想使用该定义的流程，那么可以挂起该流程。当然该流程定义下边所有的流程实例全部暂停。
+部署的流程默认的状态为激活，如果我们暂时不想使用该定义的流程，那么可以挂起该流程。当然该流程定义下边所有的流程实例全部暂停。
 
 流程定义为挂起状态，该流程定义将不允许启动新的流程实例，同时该流程定义下的所有的流程实例都将全部挂起暂停执行。
 
@@ -1560,7 +1560,7 @@ BPMN2.0的**基本符合**主要包含：
 
 ## 6.启动流程实例
 
-&emsp;&emsp;然后我们来看看启动流程实例的过程。实现代码如下：
+然后我们来看看启动流程实例的过程。实现代码如下：
 
 ```java
 /**
@@ -1587,7 +1587,7 @@ BPMN2.0的**基本符合**主要包含：
     }
 ```
 
-&emsp;&emsp;当我们启动了一个流程实例后，会在ACT_RU_*对应的表结构中操作,运行时实例涉及的表结构共10张：
+当我们启动了一个流程实例后，会在ACT_RU_*对应的表结构中操作,运行时实例涉及的表结构共10张：
 
 * ACT_RU_DEADLETTER_JOB  正在运行的任务表 
 * ACT_RU_EVENT_SUBSCR 运行时事件 
@@ -1602,7 +1602,7 @@ BPMN2.0的**基本符合**主要包含：
 
 
 
-&emsp;&emsp;启动一个流程实例的时候涉及到的表有
+启动一个流程实例的时候涉及到的表有
 
 * ACT_RU_EXECUTION 运行时流程执行实例 
 * ACT_RU_IDENTITYLINK 运行时用户关系信息 
@@ -1735,7 +1735,7 @@ ACT_RU_IDENTITYLINK 运行时用户关系信息
 
 ## 7.处理流程
 
-&emsp;&emsp;上面的流程已经流转到了zhangsan这个用户这里，然后可以开始审批了
+上面的流程已经流转到了zhangsan这个用户这里，然后可以开始审批了
 
 ```java
 // 获取流程引擎对象
@@ -1752,7 +1752,7 @@ ACT_RU_IDENTITYLINK 运行时用户关系信息
         taskService.complete(task.getId(),variables);
 ```
 
-&emsp;&emsp;在正常处理流程中涉及到的表结构
+在正常处理流程中涉及到的表结构
 
 * ACT_RU_EXECUTION 运行时流程执行实例 
 * ACT_RU_IDENTITYLINK 运行时用户关系信息 
@@ -1822,7 +1822,7 @@ IDENTITYLINK中会记录每次流程操作的信息
 
 ## 8.完成一个流程
 
-&emsp;&emsp;然后我们把第一个流程处理完成
+然后我们把第一个流程处理完成
 
 ```java
 ProcessEngine processEngine = cfg.buildProcessEngine();

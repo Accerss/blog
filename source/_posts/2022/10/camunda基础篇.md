@@ -11,11 +11,11 @@ categories: [笔记]
 
 # 一、工作流相关介绍
 
-&emsp;&emsp;**BPM**(BusinessProcessManagement)，业务流程管理是一种管理原则，通常也可以代指BPMS(BusinessProcessManagementSuite)，是一个实现整合不同系统和数据的流程管理软件套件.
+**BPM**(BusinessProcessManagement)，业务流程管理是一种管理原则，通常也可以代指BPMS(BusinessProcessManagementSuite)，是一个实现整合不同系统和数据的流程管理软件套件.
 
-&emsp;&emsp;**BPMN**(BusinessProcessModelandNotation)是基于流程图的通用可视化标准。该流程图被设计用于创建业务流程操作的图形化模型。业务流程模型就是图形化对象的网状图，包括活动和用于定义这些活动执行顺序的`流程设计器`。BPMN2.0正式版本于2011年1月3日发布，常见的`工作流引擎`如：Activiti、Flowable、jBPM 都基于 BPMN 2.0 标准。
+**BPMN**(BusinessProcessModelandNotation)是基于流程图的通用可视化标准。该流程图被设计用于创建业务流程操作的图形化模型。业务流程模型就是图形化对象的网状图，包括活动和用于定义这些活动执行顺序的`流程设计器`。BPMN2.0正式版本于2011年1月3日发布，常见的`工作流引擎`如：Activiti、Flowable、jBPM 都基于 BPMN 2.0 标准。
 
-&emsp;&emsp;然后来看看BPM的发展历程：
+然后来看看BPM的发展历程：
 
 ![image-20220830005000114](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220830005000114.png)
 
@@ -33,7 +33,7 @@ categories: [笔记]
 
 ## 1.Camunda Modeler 
 
-&emsp;&emsp;Camunda Modeler 是Camunda 官方提供的一个流程设计器，用于编辑流程图以及其他模型【表单】，也就是一个流程图的绘图工具。可以官方下载，也可以在提供给大家的资料中获取。获取后直接解压缩即可，注意：解压安装到非中文目录中!!!
+Camunda Modeler 是Camunda 官方提供的一个流程设计器，用于编辑流程图以及其他模型【表单】，也就是一个流程图的绘图工具。可以官方下载，也可以在提供给大家的资料中获取。获取后直接解压缩即可，注意：解压安装到非中文目录中!!!
 
 ![image-20220901105936567](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220901105936567.png)
 
@@ -49,11 +49,11 @@ categories: [笔记]
 
 下载地址 https://camunda.com/download/
 
-&emsp;&emsp;Camunda BPM 是Camunda官方提供的一个`业务流程管理`平台,用来管理，部署的流程定义、执行任务，策略等。下载安装一个Camunda平台，成功解压 Camunda 平台的发行版后，执行名为start.bat（对于 Windows 用户）或start.sh（对于 Unix 用户）的脚本。此脚本将启动应用程序服务器。
+Camunda BPM 是Camunda官方提供的一个`业务流程管理`平台,用来管理，部署的流程定义、执行任务，策略等。下载安装一个Camunda平台，成功解压 Camunda 平台的发行版后，执行名为start.bat（对于 Windows 用户）或start.sh（对于 Unix 用户）的脚本。此脚本将启动应用程序服务器。
 
 ![image-20220901110225636](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220901110225636.png)
 
-&emsp;&emsp;打开您的 Web 浏览器并导航到http://localhost:8080/以访问欢迎页面，Camunda的管理平台。
+打开您的 Web 浏览器并导航到http://localhost:8080/以访问欢迎页面，Camunda的管理平台。
 
 
 
@@ -75,7 +75,7 @@ categories: [笔记]
 
 ### 3.1 创建简单流程
 
-&emsp;&emsp;我们先通过 Modeler 来绘制一个简单流程
+我们先通过 Modeler 来绘制一个简单流程
 
 1.) 创建流程：选择 BPMN diagram (Camunda Platform)
 
@@ -115,7 +115,7 @@ categories: [笔记]
 
 5.) 配置流程参数
 
-&emsp;&emsp;点击画布的空白处，右侧的面板会显示当前流程本身的参数,这里我们修改id为*payment-retrieval*，id是区分流程的标识然后修改Name 为“付款流程”最后确保 `Executable`是勾选的，只有`Executable`被勾选，流程才能执行
+点击画布的空白处，右侧的面板会显示当前流程本身的参数,这里我们修改id为*payment-retrieval*，id是区分流程的标识然后修改Name 为“付款流程”最后确保 `Executable`是勾选的，只有`Executable`被勾选，流程才能执行
 
 ![image-20220901111725855](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220901111725855.png)
 
@@ -123,7 +123,7 @@ categories: [笔记]
 
 ### 3.2 外部任务
 
-&emsp;&emsp;在上面设计的流程图，`刷卡付款`节点的处理是外部任务，Camunda 可以使多种语言实现业务逻辑，我们以Java为例来介绍。
+在上面设计的流程图，`刷卡付款`节点的处理是外部任务，Camunda 可以使多种语言实现业务逻辑，我们以Java为例来介绍。
 
 添加相关的依赖：
 
@@ -190,7 +190,7 @@ public class Demo01 {
 
 ### 3.3 部署流程
 
-&emsp;&emsp;接下来我们就可以来部署上面定义的流程了。使用 Camunda Modeler 部署流程，点击工具栏中的部署按钮可以将当前流程部署到流程引擎，点击部署按钮，输入Deployment Name 为 “Payment” ，输入下方REST Endpoint 为http://localhost:8080/engine-rest ，然后点击右下角Deploy部署
+接下来我们就可以来部署上面定义的流程了。使用 Camunda Modeler 部署流程，点击工具栏中的部署按钮可以将当前流程部署到流程引擎，点击部署按钮，输入Deployment Name 为 “Payment” ，输入下方REST Endpoint 为http://localhost:8080/engine-rest ，然后点击右下角Deploy部署
 
 
 部署操作：
@@ -219,7 +219,7 @@ public class Demo01 {
 
 ### 3.4 启动流程
 
-&emsp;&emsp;我们使用Rest API发起流程，所以需要一个接口测试工具（例如：Postman），或者也可以使用电脑自带的curl
+我们使用Rest API发起流程，所以需要一个接口测试工具（例如：Postman），或者也可以使用电脑自带的curl
 
 curl执行如下命令
 
@@ -265,7 +265,7 @@ postman方式处理
 
 # 三、案例扩展
 
-&emsp;&emsp;上面的案例过于简单，我们添加不同的任务节点和网关来丰富下
+上面的案例过于简单，我们添加不同的任务节点和网关来丰富下
 
 ## 1. 用户任务
 
@@ -273,7 +273,7 @@ postman方式处理
 
 ### 1.1 添加节点
 
-&emsp;&emsp; 我们在上面的案例中添加一个`用户任务`来处理流程。
+ 我们在上面的案例中添加一个`用户任务`来处理流程。
 
 ![image-20220903233945199](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220903233945199.png)
 
@@ -283,7 +283,7 @@ postman方式处理
 
 
 
-&emsp;&emsp;然后设置节点的审批人为`demo`
+然后设置节点的审批人为`demo`
 
 ![image-20220903234231682](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220903234231682.png)
 
@@ -291,7 +291,7 @@ postman方式处理
 
 ### 1.2 配置表单
 
-&emsp;&emsp;在`用户节点`处我们绑定表单数据。然后创建表单相关的字段，并添加对应的描述信息。
+在`用户节点`处我们绑定表单数据。然后创建表单相关的字段，并添加对应的描述信息。
 
 ![image-20220904001026418](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904001026418.png)
 
@@ -323,7 +323,7 @@ postman方式处理
 
 ### 1.3 部署流程
 
-&emsp;&emsp;流程定义好之后我们就可以部署流程了。直接在`Camunda Modeler`工具栏上的上传按钮将流程上传到流程引擎中。部署后在`Camunda Web`中查看部署的流程。
+流程定义好之后我们就可以部署流程了。直接在`Camunda Modeler`工具栏上的上传按钮将流程上传到流程引擎中。部署后在`Camunda Web`中查看部署的流程。
 
 ![image-20220904001636662](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904001636662.png)
 
@@ -333,11 +333,11 @@ postman方式处理
 
 ### 1.4 测试流程
 
-&emsp;&emsp;打开任务列表（http://localhost:8080/camunda/app/tasklist/），使用 demo / demo 登录。点击右上角的 `Start process` ，在弹出的对话框中选择“付款流程”.
+打开任务列表（http://localhost:8080/camunda/app/tasklist/），使用 demo / demo 登录。点击右上角的 `Start process` ，在弹出的对话框中选择“付款流程”.
 
 ![image-20220904001816475](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904001816475.png)
 
-&emsp;&emsp;这时会弹出编辑流程变量的对话框，可以通过点击 Add a variable 按钮添加变量，这次我们先不添加，直接点击右下角` Start `启动流程。
+这时会弹出编辑流程变量的对话框，可以通过点击 Add a variable 按钮添加变量，这次我们先不添加，直接点击右下角` Start `启动流程。
 
 ![image-20220904001902564](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904001902564.png)
 
@@ -347,7 +347,7 @@ postman方式处理
 
 
 
-&emsp;&emsp;到这儿这个`用户任务`节点的人工审核就应该要处理了，我们在下一个案例中继续这个案例，我们加入排他网关来处理。
+到这儿这个`用户任务`节点的人工审核就应该要处理了，我们在下一个案例中继续这个案例，我们加入排他网关来处理。
 
 
 
@@ -355,11 +355,11 @@ postman方式处理
 
 ## 2.排他网关
 
-&emsp;&emsp;我们将使用**排他网关**(*Exclusive Gateways*)，为流程添加分支，仅在金额足够大的时候进行人工审核.
+我们将使用**排他网关**(*Exclusive Gateways*)，为流程添加分支，仅在金额足够大的时候进行人工审核.
 
 ### 2.1 添加网关节点
 
-&emsp;&emsp;首先打开`Camunda Modeler `，在左侧的工具架中找到网关（菱形），将它拖动到“付款请求”和“刷卡付款”之间，将“批准付款”向下移动再添加一个网关，调整流程，最后看起来类似这样：
+首先打开`Camunda Modeler `，在左侧的工具架中找到网关（菱形），将它拖动到“付款请求”和“刷卡付款”之间，将“批准付款”向下移动再添加一个网关，调整流程，最后看起来类似这样：
 
 ![image-20220904004632887](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904004632887.png)
 
@@ -367,7 +367,7 @@ postman方式处理
 
 ### 2.2 配置网关
 
-&emsp;&emsp;接下来，我们选择“<1000”的连线，打开属性面板，选择“Condition Type”为“Expression”，这里我们使用[JAVA统一表达式语言](https://docs.camunda.org/manual/latest/user-guide/process-engine/expression-language/)编写条件，这里要做的是在金额小于1000时直接刷卡付款，则输入表达式 `${amount<1000}`
+接下来，我们选择“<1000”的连线，打开属性面板，选择“Condition Type”为“Expression”，这里我们使用[JAVA统一表达式语言](https://docs.camunda.org/manual/latest/user-guide/process-engine/expression-language/)编写条件，这里要做的是在金额小于1000时直接刷卡付款，则输入表达式 `${amount<1000}`
 
 ![image-20220904004725626](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904004725626.png)
 
@@ -385,7 +385,7 @@ postman方式处理
 
 ### 2.3 部署流程
 
-&emsp;&emsp;部署流程和上面的操作是一样的。
+部署流程和上面的操作是一样的。
 
 ![image-20220904005023089](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904005023089.png)
 
@@ -393,7 +393,7 @@ postman方式处理
 
 ### 2.4 测试操作
 
-&emsp;&emsp;打开任务列表（http://localhost:8080/camunda/app/tasklist/），使用 demo / demo 登录,点击右上角的 Start process ，在弹出的对话框中选择“付款流程”,上面例子中，我们直接点击 Start，但这次我们要增加几个变量来测试动态的流程。
+打开任务列表（http://localhost:8080/camunda/app/tasklist/），使用 demo / demo 登录,点击右上角的 Start process ，在弹出的对话框中选择“付款流程”,上面例子中，我们直接点击 Start，但这次我们要增加几个变量来测试动态的流程。
 
 ![image-20220904005221732](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904005221732.png)
 
@@ -405,11 +405,11 @@ postman方式处理
 
 ## 3.决策自动化
 
-&emsp;&emsp;在上面的案例中我们在审批时是通过`用户任务`结合表单来做的审批，本案例我们来看看我们通过`DMN`为流程添加一个业务规则来处理
+在上面的案例中我们在审批时是通过`用户任务`结合表单来做的审批，本案例我们来看看我们通过`DMN`为流程添加一个业务规则来处理
 
 ### 3.1 添加业务规则
 
-&emsp;&emsp;打开 Camunda Modeler，点击 “批准付款”，在右面的扳手菜单中，将类型改为“**Business Rule Task** ”（业务规则任务）
+打开 Camunda Modeler，点击 “批准付款”，在右面的扳手菜单中，将类型改为“**Business Rule Task** ”（业务规则任务）
 
 ![image-20220904113549016](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904113549016.png)
 
@@ -422,11 +422,11 @@ postman方式处理
 
 ### 3.2 创建DMN表
 
-&emsp;&emsp;点击 `File > New File > DMN Diagram`创建一个新的DMN,现在画布上已经存在一个决策元素了，选择它，然后在右侧属性面板中更改`Id`和`Name`，这里的Id需要和流程中的`Decision Ref`属性一致，这次我们输入Id为`approve-payment`
+点击 `File > New File > DMN Diagram`创建一个新的DMN,现在画布上已经存在一个决策元素了，选择它，然后在右侧属性面板中更改`Id`和`Name`，这里的Id需要和流程中的`Decision Ref`属性一致，这次我们输入Id为`approve-payment`
 
 ![image-20220904113803219](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904113803219.png)
 
-&emsp;&emsp;接下来，点击决策元素左上角的表格按钮，创建新的DMN表.
+接下来，点击决策元素左上角的表格按钮，创建新的DMN表.
 
 ![image-20220904113905505](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904113905505.png)
 
@@ -434,7 +434,7 @@ postman方式处理
 
 ### 3.3 编辑DMN表
 
-&emsp;&emsp;首先编辑输入参数，在本例中，为了简单，我们依据项目名进行判断，规则可以使用 `FEEL 表达式`、`JUEL`或者 `Script` 书写，详情可以阅读 https://docs.camunda.org/manual/latest/user-guide/dmn-engine/expressions-and-scripts/
+首先编辑输入参数，在本例中，为了简单，我们依据项目名进行判断，规则可以使用 `FEEL 表达式`、`JUEL`或者 `Script` 书写，详情可以阅读 https://docs.camunda.org/manual/latest/user-guide/dmn-engine/expressions-and-scripts/
 
 双击表格中的*Input*，编辑第一个输入参数
 
@@ -452,7 +452,7 @@ postman方式处理
 
 ### 3.4 部署DMN表
 
-&emsp;&emsp;点击底部的部署按钮，将DMN部署到流程引擎中
+点击底部的部署按钮，将DMN部署到流程引擎中
 
 ![image-20220904114317458](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904114317458.png)
 
@@ -460,7 +460,7 @@ postman方式处理
 
 ### 3.5 流程案例测试
 
-&emsp;&emsp;现在打开 http://localhost:8080/camunda/app/cockpit/ ，使用demo/demo登录，可以看到决策定义增加了一个，点击进去可以看到刚才编辑的DMN.
+现在打开 http://localhost:8080/camunda/app/cockpit/ ，使用demo/demo登录，可以看到决策定义增加了一个，点击进去可以看到刚才编辑的DMN.
 
 ![image-20220904114413678](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220904114413678.png)
 

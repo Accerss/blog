@@ -125,7 +125,7 @@ class FlowableSpringBoot28ApplicationTests {
 
 ### 3.2 启动流程
 
-&emsp;&emsp;启动流程和前面介绍的就没什么差异了，通过RuntimeService来实现
+启动流程和前面介绍的就没什么差异了，通过RuntimeService来实现
 
 ```java
     /**
@@ -144,7 +144,7 @@ class FlowableSpringBoot28ApplicationTests {
 
 ### 3.3 处理流程
 
-&emsp;&emsp;处理流程和前面介绍的也一样，通过TaskService来处理
+处理流程和前面介绍的也一样，通过TaskService来处理
 
 ```java
     /**

@@ -11,11 +11,11 @@ categories: [笔记]
 
 # 一、IDEA引入流程设计器
 
-&emsp;&emsp;在工作流引擎中流程设计器是一个非常重要的组件，而`InterlliJ IDEA`是Java程序员用到的最多的编程工具了。前面在基础篇的介绍中我们都在通过Camunda提供的流程设计器绘制好流程图，然后需要单独的拷贝到项目中，要是调整修改不是很方便，这时我们可以在IDEA中和流程设计器绑定起来。这样会更加的灵活。
+在工作流引擎中流程设计器是一个非常重要的组件，而`InterlliJ IDEA`是Java程序员用到的最多的编程工具了。前面在基础篇的介绍中我们都在通过Camunda提供的流程设计器绘制好流程图，然后需要单独的拷贝到项目中，要是调整修改不是很方便，这时我们可以在IDEA中和流程设计器绑定起来。这样会更加的灵活。
 
 ## 1.下载Camunda Model
 
-&emsp;&emsp;第一步肯定是需要下载`Camunda Model` 这个流程设计器，我们前面有介绍。就是之前解压好的目录了。
+第一步肯定是需要下载`Camunda Model` 这个流程设计器，我们前面有介绍。就是之前解压好的目录了。
 
 ![image-20220907002253021](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907002253021.png)
 
@@ -23,7 +23,7 @@ categories: [笔记]
 
 ## 2.IDEA中配置
 
-&emsp;&emsp;我们先进入`settings`中然后找到`tools`,继续找到`External Tool`.
+我们先进入`settings`中然后找到`tools`,继续找到`External Tool`.
 
 ![image-20220907002432482](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907002432482.png)
 
@@ -37,7 +37,7 @@ categories: [笔记]
 
 ## 3.编辑bpmn文件
 
-&emsp;&emsp;找到您想打开的bpmn文件, 点击右键, 找到External Tools 运行camunda modler即可进行文件编写.
+找到您想打开的bpmn文件, 点击右键, 找到External Tools 运行camunda modler即可进行文件编写.
 
 ![image-20220907002851738](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907002851738.png)
 
@@ -49,31 +49,31 @@ categories: [笔记]
 
 ## 1.官方案例说明
 
-&emsp;&emsp;接下来我们看看怎么在我们的实际项目中来使用Camunda了。方式有多种，首先我们可以参考官网提供的整合案例。
+接下来我们看看怎么在我们的实际项目中来使用Camunda了。方式有多种，首先我们可以参考官网提供的整合案例。
 
 ![image-20220907003810268](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907003810268.png)
 
-&emsp;&emsp;但是这里有个比较头疼的问题就是Camunda和SpringBoot版本的兼容性问题，虽然官方也给出了兼容版本的对照表。
+但是这里有个比较头疼的问题就是Camunda和SpringBoot版本的兼容性问题，虽然官方也给出了兼容版本的对照表。
 
 ![image-20220907003929928](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907003929928.png)
 
 
 
-&emsp;&emsp;但是如果不小心还是会出现各种问题，比如：
+但是如果不小心还是会出现各种问题，比如：
 
 ![image-20220907004050862](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907004050862.png)
 
-&emsp;&emsp;上面就是典型的版本不兼容的问题了。
+上面就是典型的版本不兼容的问题了。
 
 
 
 ## 2.官方Demo
 
-&emsp;&emsp;为了能让我们的案例快速搞定，我们可以通过Camunda官方提供的网站来创建我们的案例程序。地址：https://start.camunda.com/
+为了能让我们的案例快速搞定，我们可以通过Camunda官方提供的网站来创建我们的案例程序。地址：https://start.camunda.com/
 
 ![image-20220907004531764](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907004531764.png)
 
-&emsp;&emsp;生成代码后，解压后我们通过idea打开项目，项目结构
+生成代码后，解压后我们通过idea打开项目，项目结构
 
 ![image-20220907010229047](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907010229047.png)
 
@@ -191,15 +191,15 @@ camunda.bpm.admin-user:
 
 ## 3.MySQL数据库
 
-&emsp;&emsp;上面的例子我们数据存储在了H2这个内存型数据库，我们可以切换到`MySQL`数据库。首先我们需要导入相关的SQL脚本。位置就在我们之前下载的`Camunda Web`服务中。
+上面的例子我们数据存储在了H2这个内存型数据库，我们可以切换到`MySQL`数据库。首先我们需要导入相关的SQL脚本。位置就在我们之前下载的`Camunda Web`服务中。
 
 ![image-20220907010729453](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907010729453.png)
 
-&emsp;&emsp;执行创建所有必需的表和默认索引的SQL DDL脚本。上面两个脚本都要执行。
+执行创建所有必需的表和默认索引的SQL DDL脚本。上面两个脚本都要执行。
 
 ![image-20220907011030798](D:\desktop\工作目录\01-录课资料\22-camunda\02-课件资料\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220907011030798.png)
 
-&emsp;&emsp;生成的相关表结构比较多，因为本身就是基于Activiti演变而来，所以有Activiti基础的小伙伴会非常轻松了。简单介绍下相关表结构的作用。
+生成的相关表结构比较多，因为本身就是基于Activiti演变而来，所以有Activiti基础的小伙伴会非常轻松了。简单介绍下相关表结构的作用。
 
 * **ACT_RE** ：'RE'表示 repository。 这个前缀的表包含了流程定义和流程静态资源 （图片，规则，等等）。
 * **ACT_RU**：'RU'表示 runtime。 这些运行时的表，包含流程实例，任务，变量，异步任务，等运行中的数据。 Flowable只在流程实例执行过程中保存这些数据， 在流程结束时就会删除这些记录。 这样运行时表可以一直很小速度很快。
@@ -247,7 +247,7 @@ camunda.bpm.admin-user:
 
  
 
-&emsp;&emsp;然后我们在SpringBoot项目中导入`MySql`的依赖，然后修改对应的配置信息
+然后我们在SpringBoot项目中导入`MySql`的依赖，然后修改对应的配置信息
 
 ```xml
     <dependency>
@@ -256,7 +256,7 @@ camunda.bpm.admin-user:
     </dependency>
 ```
 
-&emsp;&emsp;修改`application.yaml`。添加数据源的相关信息。
+修改`application.yaml`。添加数据源的相关信息。
 
 ```yaml
 # spring.datasource.url: jdbc:h2:file:./camunda-h2-database
@@ -288,7 +288,7 @@ camunda:
 
 # 三、Camunda专题讲解
 
-&emsp;&emsp;用了整合的基础我们就可以来完成一个流程审批的案例了
+用了整合的基础我们就可以来完成一个流程审批的案例了
 
 ## 1.部署流程
 
@@ -315,7 +315,7 @@ public class FlowController {
 
 ## 2.启动流程
 
-&emsp;&emsp;启动流程我们通过单元测试来操作
+启动流程我们通过单元测试来操作
 
 ```java
 package com.boge.workflow;
@@ -366,7 +366,7 @@ public class ApplicationTest {
 
 ## 3.查询待办
 
-&emsp;&emsp;查询待办也就是查看当前需要审批的任务，通过TaskService来处理
+查询待办也就是查看当前需要审批的任务，通过TaskService来处理
 
 ```java
     /**

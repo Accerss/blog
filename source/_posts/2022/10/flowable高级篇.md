@@ -13,7 +13,7 @@ categories: [笔记]
 
 ### 1.1 固定分配
 
-&emsp;&emsp;固定分配就是我们前面介绍的，在绘制流程图或者直接在流程文件中通过Assignee来指定的方式
+固定分配就是我们前面介绍的，在绘制流程图或者直接在流程文件中通过Assignee来指定的方式
 
 ![image-20220322205919319](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220322205919319.png)
 
@@ -23,11 +23,11 @@ categories: [笔记]
 
 ### 1.2 表达式分配
 
-&emsp;&emsp;Flowable使用UEL进行表达式解析。UEL代表*Unified Expression Language*，是EE6规范的一部分.Flowable支持两种UEL表达式： UEL-value 和UEL-method
+Flowable使用UEL进行表达式解析。UEL代表*Unified Expression Language*，是EE6规范的一部分.Flowable支持两种UEL表达式： UEL-value 和UEL-method
 
 #### 1.2.1 值表达式
 
-&emsp;&emsp;**值表达式 Value expression**: 解析为一个值。默认情况下，所有流程变量都可以使用。（若使用Spring）所有的Spring bean也可以用在表达式里。例如
+**值表达式 Value expression**: 解析为一个值。默认情况下，所有流程变量都可以使用。（若使用Spring）所有的Spring bean也可以用在表达式里。例如
 
 ```txt
 ${myVar}
@@ -89,7 +89,7 @@ ${myBean.myProperty}
 
 #### 1.2.2 方法表达式
 
-&emsp;&emsp;**方法表达式 Method expression**: 调用一个方法，可以带或不带参数。**当调用不带参数的方法时，要确保在方法名后添加空括号（以避免与值表达式混淆）。**传递的参数可以是字面值(literal value)，也可以是表达式，它们会被自动解析。例如：
+**方法表达式 Method expression**: 调用一个方法，可以带或不带参数。**当调用不带参数的方法时，要确保在方法名后添加空括号（以避免与值表达式混淆）。**传递的参数可以是字面值(literal value)，也可以是表达式，它们会被自动解析。例如：
 
 ```txt
 ${printer.print()}
@@ -97,7 +97,7 @@ ${myBean.addNewOrder('orderName')}
 ${myBean.doSomething(myVar, execution)}
 ```
 
-&emsp;&emsp;myBean是Spring容器中的个Bean对象，表示调用的是bean的addNewOrder方法
+myBean是Spring容器中的个Bean对象，表示调用的是bean的addNewOrder方法
 
 
 
@@ -161,17 +161,17 @@ All：所有事件都触发
 
 ## 2.流程变量
 
-&emsp;&emsp;流程实例按步骤执行时，需要使用一些数据。在Flowable中，这些数据称作*变量(variable)*，并会存储在数据库中。变量可以用在表达式中（例如在排他网关中用于选择正确的出口路径），也可以在Java服务任务(service task)中用于调用外部服务（例如为服务调用提供输入或结果存储），等等。
+流程实例按步骤执行时，需要使用一些数据。在Flowable中，这些数据称作*变量(variable)*，并会存储在数据库中。变量可以用在表达式中（例如在排他网关中用于选择正确的出口路径），也可以在Java服务任务(service task)中用于调用外部服务（例如为服务调用提供输入或结果存储），等等。
 
-&emsp;&emsp;流程实例可以持有变量（称作*流程变量 process variables*）；用户任务以及*执行(executions)*——流程当前活动节点的指针——也可以持有变量。流程实例可以持有任意数量的变量，每个变量存储为*ACT_RU_VARIABLE*数据库表的一行。
+流程实例可以持有变量（称作*流程变量 process variables*）；用户任务以及*执行(executions)*——流程当前活动节点的指针——也可以持有变量。流程实例可以持有任意数量的变量，每个变量存储为*ACT_RU_VARIABLE*数据库表的一行。
 
-&emsp;&emsp;所有的*startProcessInstanceXXX*方法都有一个可选参数，用于在流程实例创建及启动时设置变量。例如，在*RuntimeService*中：
+所有的*startProcessInstanceXXX*方法都有一个可选参数，用于在流程实例创建及启动时设置变量。例如，在*RuntimeService*中：
 
 ```java
 ProcessInstance startProcessInstanceByKey(String processDefinitionKey, Map<String, Object> variables);
 ```
 
-&emsp;&emsp;也可以在流程执行中加入变量。例如，(*RuntimeService*):
+也可以在流程执行中加入变量。例如，(*RuntimeService*):
 
 ```java
 void setVariable(String executionId, String variableName, Object value);
@@ -188,17 +188,17 @@ void setVariablesLocal(String executionId, Map<String, ? extends Object> variabl
 
 ### 2.1 全局变量
 
-&emsp;&emsp;流程变量的默认作用域是流程实例。当一个流程变量的作用域为流程实例时，可以称为 global 变量
+流程变量的默认作用域是流程实例。当一个流程变量的作用域为流程实例时，可以称为 global 变量
 
 注意：如：    Global变量：userId（变量名）、zhangsan（变量值）
 
-&emsp;&emsp;global 变量中变量名不允许重复，设置相同名称的变量，后设置的值会覆盖前设置的变量值。
+global 变量中变量名不允许重复，设置相同名称的变量，后设置的值会覆盖前设置的变量值。
 
 ### 2.2 局部变量
 
-&emsp;&emsp;任务和执行实例仅仅是针对一个任务和一个执行实例范围，范围没有流程实例大， 称为 local 变量。
+任务和执行实例仅仅是针对一个任务和一个执行实例范围，范围没有流程实例大， 称为 local 变量。
 
-&emsp;&emsp;Local 变量由于在不同的任务或不同的执行实例中，作用域互不影响，变量名可以相同没有影响。Local 变量名也可以和 global 变量名相同，没有影响。 
+Local 变量由于在不同的任务或不同的执行实例中，作用域互不影响，变量名可以相同没有影响。Local 变量名也可以和 global 变量名相同，没有影响。 
 
 
 
@@ -332,13 +332,13 @@ public void deploy(){
 
 # 二、候选人和候选人组
 
-&emsp;&emsp;在流程定义中在任务结点的 assignee 固定设置任务负责人，在流程定义时将参与者固定设置在.bpmn 文件中，如果临时任务负责人变更则需要修改流程定义，系统可扩展性差。针对这种情况可以给任务设置多个候选人或者候选人组，可以从候选人中选择参与者来完成任务。
+在流程定义中在任务结点的 assignee 固定设置任务负责人，在流程定义时将参与者固定设置在.bpmn 文件中，如果临时任务负责人变更则需要修改流程定义，系统可扩展性差。针对这种情况可以给任务设置多个候选人或者候选人组，可以从候选人中选择参与者来完成任务。
 
 ## 1.候选人
 
 ### 1.1 定义流程图
 
-&emsp;&emsp;定义流程图，同时指定候选人，多个候选人会通过`,`连接
+定义流程图，同时指定候选人，多个候选人会通过`,`连接
 
 ![image-20220325095959489](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220325095959489.png)
 
@@ -350,7 +350,7 @@ public void deploy(){
 
 ### 1.2 部署和启动流程实例
 
-&emsp;&emsp;部署流程，并且在启动流程实例的时候对UEL表达式赋值
+部署流程，并且在启动流程实例的时候对UEL表达式赋值
 
 ```java
     /**
@@ -385,7 +385,7 @@ public void deploy(){
     }
 ```
 
-&emsp;&emsp;在对应的表结构中我们可以看到流程变量已经有了，但是对于的Task的Assignee还是为空。
+在对应的表结构中我们可以看到流程变量已经有了，但是对于的Task的Assignee还是为空。
 
 ![image-20220325101054787](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220325101054787.png)
 
@@ -401,7 +401,7 @@ public void deploy(){
 
 ### 1.3 任务的查询
 
-&emsp;&emsp;根据当前登录的用户，查询对应的候选任务
+根据当前登录的用户，查询对应的候选任务
 
 ```java
    /**
@@ -428,7 +428,7 @@ public void deploy(){
 
 ### 1.4 任务的拾取
 
-&emsp;&emsp;知道了我有可拾取的任务后，拾取任务。
+知道了我有可拾取的任务后，拾取任务。
 
 ```java
 /**
@@ -461,7 +461,7 @@ public void deploy(){
 
 ### 1.5 任务的归还
 
-&emsp;&emsp;拾取任务后不想操作那么就归还任务
+拾取任务后不想操作那么就归还任务
 
 ```java
     /**
@@ -492,7 +492,7 @@ public void deploy(){
 
 ### 1.6 任务的交接
 
-&emsp;&emsp;拾取任务后如果不想操作也不想归还可以直接交接给另外一个人来处理
+拾取任务后如果不想操作也不想归还可以直接交接给另外一个人来处理
 
 ```java
    /**
@@ -522,7 +522,7 @@ public void deploy(){
 
 ### 1.7 任务的完成
 
-&emsp;&emsp;正常的任务处理
+正常的任务处理
 
 ```java
    /**
@@ -554,13 +554,13 @@ public void deploy(){
 
 ## 2.候选人组
 
-&emsp;&emsp;当候选人很多的情况下，我们可以分组来处理。先创建组，然后把用户分配到这个组中。
+当候选人很多的情况下，我们可以分组来处理。先创建组，然后把用户分配到这个组中。
 
 ### 2.1 管理用户和组
 
 #### 2.1.1 用户管理
 
-&emsp;&emsp;我们需要先单独维护用户信息。后台对应的表结构是`ACT_ID_USER`.
+我们需要先单独维护用户信息。后台对应的表结构是`ACT_ID_USER`.
 
 ```java
    /**
@@ -587,7 +587,7 @@ public void deploy(){
 
 #### 2.1.2 Group管理
 
-&emsp;&emsp;维护对应的Group信息，后台对应的表结构是`ACT_ID_GROUP`
+维护对应的Group信息，后台对应的表结构是`ACT_ID_GROUP`
 
 ```java
     /**
@@ -613,7 +613,7 @@ public void deploy(){
 
 #### 2.1.3 用户分配组
 
-&emsp;&emsp;用户和组是一个多对多的关联关联，我们需要做相关的分配，后台对应的表结构是`ACT_ID_MEMBERSHIP`
+用户和组是一个多对多的关联关联，我们需要做相关的分配，后台对应的表结构是`ACT_ID_MEMBERSHIP`
 
 ```java
     /**
@@ -643,7 +643,7 @@ public void deploy(){
 
 ### 2.2 候选人组应用
 
-&emsp;&emsp;搞清楚了用户和用户组的关系后我们就可以来使用候选人组的应用了
+搞清楚了用户和用户组的关系后我们就可以来使用候选人组的应用了
 
 #### 2.2.1 创建流程图
 
@@ -661,7 +661,7 @@ public void deploy(){
 
 #### 2.2.2 流程的部署运行
 
-&emsp;&emsp;然后我们把流程部署和运行，注意对UEL表达式赋值，关联上Group
+然后我们把流程部署和运行，注意对UEL表达式赋值，关联上Group
 
 ```java
 /**
@@ -707,7 +707,7 @@ public void deploy(){
 
 #### 2.2.3 任务的拾取和完成
 
-&emsp;&emsp;然后完成任务的查询拾取和处理操作
+然后完成任务的查询拾取和处理操作
 
 ```java
 /**
@@ -789,13 +789,13 @@ public void deploy(){
 
 ## 1.排他网关
 
-&emsp;&emsp;排他网关（exclusive gateway）（也叫*异或网关 XOR gateway*，或者更专业的，*基于数据的排他网关 exclusive data-based gateway*），用于对流程中的**决策**建模。当执行到达这个网关时，会按照所有出口顺序流定义的顺序对它们进行计算。选择第一个条件计算为true的顺序流（当没有设置条件时，认为顺序流为*true*）继续流程。
+排他网关（exclusive gateway）（也叫*异或网关 XOR gateway*，或者更专业的，*基于数据的排他网关 exclusive data-based gateway*），用于对流程中的**决策**建模。当执行到达这个网关时，会按照所有出口顺序流定义的顺序对它们进行计算。选择第一个条件计算为true的顺序流（当没有设置条件时，认为顺序流为*true*）继续流程。
 
-&emsp;&emsp;**请注意这里出口顺序流的含义与BPMN 2.0中的一般情况不一样。一般情况下，会选择所有条件计算为true的顺序流，并行执行。而使用排他网关时，只会选择一条顺序流。当多条顺序流的条件都计算为true时，会且仅会选择在XML中最先定义的顺序流继续流程。如果没有可选的顺序流，会抛出异常。**
+**请注意这里出口顺序流的含义与BPMN 2.0中的一般情况不一样。一般情况下，会选择所有条件计算为true的顺序流，并行执行。而使用排他网关时，只会选择一条顺序流。当多条顺序流的条件都计算为true时，会且仅会选择在XML中最先定义的顺序流继续流程。如果没有可选的顺序流，会抛出异常。**
 
 图示
 
-&emsp;&emsp;排他网关用内部带有’X’图标的标准网关（菱形）表示，'X’图标代表*异或*的含义。请注意内部没有图标的网关默认为排他网关。BPMN 2.0规范不允许在同一个流程中混合使用有及没有X的菱形标志。
+排他网关用内部带有’X’图标的标准网关（菱形）表示，'X’图标代表*异或*的含义。请注意内部没有图标的网关默认为排他网关。BPMN 2.0规范不允许在同一个流程中混合使用有及没有X的菱形标志。
 
 ![image-20220326100630908](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220326100630908.png)
 
@@ -908,13 +908,13 @@ public void deploy(){
 
 ## 2.并行网关
 
-&emsp;&emsp;并行网关允许将流程分成多条分支，也可以把多条分支汇聚到一起，并行网关的功能是基于进入和外出顺序流的：
+并行网关允许将流程分成多条分支，也可以把多条分支汇聚到一起，并行网关的功能是基于进入和外出顺序流的：
 
 * fork分支：并行后的所有外出顺序流，为每个顺序流都创建一个并发分支。
 
 * join汇聚： 所有到达并行网关，在此等待的进入分支， 直到所有进入顺序流的分支都到达以后， 流程就会通过汇聚网关。
 
-&emsp;&emsp;注意，如果同一个并行网关有多个进入和多个外出顺序流， 它就同时具有分支和汇聚功能。 这时，网关会先汇聚所有进入的顺序流，然后再切分成多个并行分支。
+注意，如果同一个并行网关有多个进入和多个外出顺序流， 它就同时具有分支和汇聚功能。 这时，网关会先汇聚所有进入的顺序流，然后再切分成多个并行分支。
 
 **与其他网关的主要区别是，并行网关不会解析条件。** **即使顺序流中定义了条件，也会被忽略。**
 
@@ -958,9 +958,9 @@ public void deploy(){
 
 ## 4.事件网关
 
-&emsp;&emsp;事件网关允许根据事件判断流向。网关的每个外出顺序流都要连接到一个中间捕获事件。 当流程到达一个基于事件网关，网关会进入等待状态：会暂停执行。与此同时，会为每个外出顺序流创建相对的事件订阅。
+事件网关允许根据事件判断流向。网关的每个外出顺序流都要连接到一个中间捕获事件。 当流程到达一个基于事件网关，网关会进入等待状态：会暂停执行。与此同时，会为每个外出顺序流创建相对的事件订阅。
 
-&emsp;&emsp;事件网关的外出顺序流和普通顺序流不同，这些顺序流不会真的"执行"， 相反它们让流程引擎去决定执行到事件网关的流程需要订阅哪些事件。 要考虑以下条件：
+事件网关的外出顺序流和普通顺序流不同，这些顺序流不会真的"执行"， 相反它们让流程引擎去决定执行到事件网关的流程需要订阅哪些事件。 要考虑以下条件：
 
 1. 事件网关必须有两条或以上外出顺序流；
 2. 事件网关后，只能使用intermediateCatchEvent类型（activiti不支持基于事件网关后连接ReceiveTask）
@@ -972,7 +972,7 @@ public void deploy(){
 
 # 四、事件
 
-&emsp;&emsp;事件（event）通常用于为流程生命周期中发生的事情建模。事件总是图形化为圆圈。在BPMN 2.0中，有两种主要的事件分类：*捕获（catching）*与*抛出（throwing）*事件。
+事件（event）通常用于为流程生命周期中发生的事情建模。事件总是图形化为圆圈。在BPMN 2.0中，有两种主要的事件分类：*捕获（catching）*与*抛出（throwing）*事件。
 
 - **捕获:** 当流程执行到达这个事件时，会等待直到触发器动作。触发器的类型由其中的图标，或者说XML中的类型声明而定义。捕获事件与抛出事件显示上的区别，是其内部的图标没有填充（即是白色的）。
 - **抛出:** 当流程执行到达这个事件时，会触发一个触发器。触发器的类型，由其中的图标，或者说XML中的类型声明而定义。抛出事件与捕获事件显示上的区别，是其内部的图标填充为黑色。
@@ -981,11 +981,11 @@ public void deploy(){
 
 ## 1.定时事件
 
-&emsp;&emsp;定时触发的相关事件，包括定时器启动事件，定时器捕获中间件事件，定时器边界事件
+定时触发的相关事件，包括定时器启动事件，定时器捕获中间件事件，定时器边界事件
 
 ### 1.1 定时器启动事件
 
-&emsp;&emsp;定时器启动事件（timer start event）在指定时间创建流程实例。在流程只需要启动一次，或者流程需要在特定的时间间隔重复启动时，都可以使用。
+定时器启动事件（timer start event）在指定时间创建流程实例。在流程只需要启动一次，或者流程需要在特定的时间间隔重复启动时，都可以使用。
 
 ***请注意**：*子流程不能有定时器启动事件。
 
@@ -1055,17 +1055,17 @@ public void deploy(){
 
 ### 1.4 timeDuration
 
-​       &emsp;&emsp;在定时事件中我们一定要放开如下的配置：
+​       在定时事件中我们一定要放开如下的配置：
 
 ![image-20220329082431920](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220329082431920.png)
 
-&emsp;&emsp;指定计时器在启动前应等待多长的时间，首先一定时器启动事件为例：
+指定计时器在启动前应等待多长的时间，首先一定时器启动事件为例：
 
 #### 开始事件
 
 ![image-20220328200755160](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220328200755160.png)
 
-&emsp;&emsp;可以通过FlowableUI的应用来验证
+可以通过FlowableUI的应用来验证
 
 ![image-20220328202242555](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220328202242555.png)
 
@@ -1245,7 +1245,7 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 ### 1.5 timeCycle
 
-&emsp;&emsp;指定重复周期，可用于周期性启动流程，或者为超期用户任务多次发送提醒,这个元素可以使用两种格式
+指定重复周期，可用于周期性启动流程，或者为超期用户任务多次发送提醒,这个元素可以使用两种格式
 
 * 第一种是按照[ISO 8601](http://en.wikipedia.org/wiki/ISO_8601#Repeating_intervals)标准定义的循环时间周期。例如（三次重复间隔，每次间隔为10小时）：R3/PT10H
 * 也可以使用*timeCycle*的可选属性*endDate*，或者像这样直接写在时间表达式的结尾：`R3/PT10H/${EndDate}`。 当到达endDate时，应用会停止，并为该任务创建其他作业
@@ -1255,7 +1255,7 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 #### 开始事件
 
-&emsp;&emsp;编写案例来演示：
+编写案例来演示：
 
 ![image-20220328213218525](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220328213218525.png)
 
@@ -1381,7 +1381,7 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 #### 边界事件
 
-&emsp;&emsp;在边界事件中，定义了循环条件`R3/PT30S`理论上要循环3次，间隔30S，单其实也只会执行一次，来看案例
+在边界事件中，定义了循环条件`R3/PT30S`理论上要循环3次，间隔30S，单其实也只会执行一次，来看案例
 
 ![image-20220328231838967](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220328231838967.png)
 
@@ -1413,11 +1413,11 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 ## 2.消息事件
 
-&emsp;&emsp;消息事件（message event），是指引用具名消息的事件。消息具有名字与载荷。与信号不同，消息事件只有一个接收者
+消息事件（message event），是指引用具名消息的事件。消息具有名字与载荷。与信号不同，消息事件只有一个接收者
 
 ### 2.1 启动事件
 
-&emsp;&emsp;消息启动事件，也就是我们通过接收到某些消息后来启动流程实例，比如接收到了一封邮件，一条短信等，具体通过案例来讲解
+消息启动事件，也就是我们通过接收到某些消息后来启动流程实例，比如接收到了一封邮件，一条短信等，具体通过案例来讲解
 
 ![image-20220329103837021](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220329103837021.png)
 
@@ -1481,7 +1481,7 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 ### 2.2 中间事件
 
-&emsp;&emsp;消息中间事件就是在流程运作中需要消息来触发的场景，案例演示，`自动流程1`处理完成后，需要接收特定的消息之后才能进入到`自动流程2`
+消息中间事件就是在流程运作中需要消息来触发的场景，案例演示，`自动流程1`处理完成后，需要接收特定的消息之后才能进入到`自动流程2`
 
 ![image-20220329111412619](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220329111412619.png)
 
@@ -1552,7 +1552,7 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 ### 2.3 边界事件
 
-&emsp;&emsp;消息边界事件，如果在消息触发前还没有，案例演示：
+消息边界事件，如果在消息触发前还没有，案例演示：
 
 ![image-20220329113848978](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220329113848978.png)
 
@@ -1626,11 +1626,11 @@ public class SignalStartTwodelegate implements JavaDelegate {
 
 ## 3.错误事件
 
-&emsp;&emsp;错误事件可以用做一个流程的开始事件或者作为一个任务或者子流程的边界事件，错误事件没有提供作用中间事件的功能，这一点和前面介绍的定时器事件和消息事件还有区别的。
+错误事件可以用做一个流程的开始事件或者作为一个任务或者子流程的边界事件，错误事件没有提供作用中间事件的功能，这一点和前面介绍的定时器事件和消息事件还有区别的。
 
 ### 3.1 开始事件
 
-&emsp;&emsp;错误启动事件（error start event），可用于触发事件子流程（Event Sub-Process）。**错误启动事件不能用于启动流程实例**。
+错误启动事件（error start event），可用于触发事件子流程（Event Sub-Process）。**错误启动事件不能用于启动流程实例**。
 
 错误启动事件总是中断。我们通过案例来介绍。此处我们用Eclipse来绘制流程图，熟悉下Eclipse工具
 
@@ -2173,7 +2173,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 ### 4.3 中间抛出事件
 
-&emsp;&emsp;信号中间抛出事件也就是在流程执行中的某个节点抛出了对应的信号，然后对应的信号中间捕获事件就会触发，我们通过具体的案例来演示如：
+信号中间抛出事件也就是在流程执行中的某个节点抛出了对应的信号，然后对应的信号中间捕获事件就会触发，我们通过具体的案例来演示如：
 
 ![image-20220330235847392](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330235847392.png)
 
@@ -2339,7 +2339,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 ### 4.4 边界事件
 
-&emsp;&emsp;最后来看看信号边界事件，案例如下：
+最后来看看信号边界事件，案例如下：
 
 ![image-20220330202443905](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330202443905.png)
 
@@ -2497,7 +2497,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 ## 5.结束事件
 
-&emsp;&emsp;结束事件顾名思义就是流程结束的事件，除了前面遇到的空结束事件外，结束事件还包括如下几种：
+结束事件顾名思义就是流程结束的事件，除了前面遇到的空结束事件外，结束事件还包括如下几种：
 
 * 错误结束事件
 * 中断结束事件
@@ -2505,7 +2505,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 ### 5.1 错误结束事件
 
-&emsp;&emsp;当流程执行到达**错误结束事件（error end event）**时，结束执行的当前分支，并抛出错误。这个错误可以由匹配的错误边界中间事件捕获。如果找不到匹配的错误边界事件，将会抛出异常。通过具体案例来详细讲解：
+当流程执行到达**错误结束事件（error end event）**时，结束执行的当前分支，并抛出错误。这个错误可以由匹配的错误边界中间事件捕获。如果找不到匹配的错误边界事件，将会抛出异常。通过具体案例来详细讲解：
 
 ![image-20220331100340069](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331100340069.png)
 
@@ -2697,11 +2697,11 @@ public class MyTwoDelegate implements JavaDelegate {
 
 ### 5.2 中断结束事件
 
-&emsp;&emsp;中断结束事件也称为终止结束事件，主要是对流程进行终止的事件，可以在一个复杂的流程中，如果某方想要提前中断这个流程，可以采用这个事件来处理，可以在并行处理任务中。如果你是在流程实例层处理，整个流程都会被中断，如果是在子流程中使用，那么当前作用和作用域内的所有的内部流程都会被终止。具体还是通过两个案例来给大家介绍：
+中断结束事件也称为终止结束事件，主要是对流程进行终止的事件，可以在一个复杂的流程中，如果某方想要提前中断这个流程，可以采用这个事件来处理，可以在并行处理任务中。如果你是在流程实例层处理，整个流程都会被中断，如果是在子流程中使用，那么当前作用和作用域内的所有的内部流程都会被终止。具体还是通过两个案例来给大家介绍：
 
 #### 5.2.1 案例一
 
-&emsp;&emsp;案例一我们介绍没有子流程的情况下终止的场景，具体案例如下
+案例一我们介绍没有子流程的情况下终止的场景，具体案例如下
 
 ![image-20220331102808059](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331102808059.png)
 
@@ -2894,7 +2894,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 #### 5.2.2 案例二
 
-&emsp;&emsp;然后我们来看看在子流程中触发终止结束事件的案例：
+然后我们来看看在子流程中触发终止结束事件的案例：
 
 ![image-20220330220208085](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330220208085.png)
 
@@ -3125,7 +3125,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 ### 5.3 取消结束事件
 
-&emsp;&emsp;取消结束事件（cancel end event）只能与BPMN事务子流程（BPMN transaction subprocess）一起使用。当到达取消结束事件时，会抛出取消事件，且必须由取消边界事件（cancel boundary event）捕获。取消边界事件将取消事务，并触发补偿（compensation）。
+取消结束事件（cancel end event）只能与BPMN事务子流程（BPMN transaction subprocess）一起使用。当到达取消结束事件时，会抛出取消事件，且必须由取消边界事件（cancel boundary event）捕获。取消边界事件将取消事务，并触发补偿（compensation）。
 
 具体通过案例来讲解：
 
@@ -3399,7 +3399,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 ### 5.4 补偿事件
 
-&emsp;&emsp;通过补偿达到控制业务流程的目的就是补偿事件，比如我们正常的买机票的流程下订单购买，然后同时弹出支付流程页面。支付成功后就可以等待出票了，但是如果我们支付失败的话，这时要么重新支付，更换支付方式或者取消预订，这时取消预订我们就可以通过补偿事件来实现，具体的案例如下：
+通过补偿达到控制业务流程的目的就是补偿事件，比如我们正常的买机票的流程下订单购买，然后同时弹出支付流程页面。支付成功后就可以等待出票了，但是如果我们支付失败的话，这时要么重新支付，更换支付方式或者取消预订，这时取消预订我们就可以通过补偿事件来实现，具体的案例如下：
 
 ![image-20220401202116847](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401202116847.png)
 
@@ -3528,7 +3528,7 @@ public class MyThreeDelegate implements JavaDelegate {
 </definitions>
 ```
 
-&emsp;&emsp;流程说明：
+流程说明：
 
 
 
