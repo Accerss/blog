@@ -31,6 +31,6 @@
     "live2d-widget-model-hijiki": "^1.0.5"
   },
   "devDependencies": {
-    "patch-package": "^6.4.7"
+    "patch-package": "^6.5.0"
   }
 }
