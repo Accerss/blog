@@ -9,7 +9,7 @@ categories: [笔记]
 
 ![image-20220902232358815](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220902232358815.png)
 
-# 一、工作流相关介绍
+# 工作流相关介绍
 
 **BPM**(BusinessProcessManagement)，业务流程管理是一种管理原则，通常也可以代指BPMS(BusinessProcessManagementSuite)，是一个实现整合不同系统和数据的流程管理软件套件.
 
@@ -19,7 +19,7 @@ categories: [笔记]
 
 ![image-20220830005000114](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220830005000114.png)
 
-# 二、Camunda介绍
+# Camunda介绍
 
 官网地址：https://camunda.com/
 
@@ -31,7 +31,7 @@ categories: [笔记]
 
 前期准备工作: JAVA1.8以上的JRE或JDK
 
-## 1.Camunda Modeler 
+## Camunda Modeler 
 
 Camunda Modeler 是Camunda 官方提供的一个流程设计器，用于编辑流程图以及其他模型【表单】，也就是一个流程图的绘图工具。可以官方下载，也可以在提供给大家的资料中获取。获取后直接解压缩即可，注意：解压安装到非中文目录中!!!
 
@@ -45,7 +45,7 @@ Camunda Modeler 是Camunda 官方提供的一个流程设计器，用于编辑�
 
 
 
-## 2.Camunda BPM
+## Camunda BPM
 
 下载地址 https://camunda.com/download/
 
@@ -71,9 +71,9 @@ Camunda BPM 是Camunda官方提供的一个`业务流程管理`平台,用来管�
 
 
 
-## 3.入门案例
+## 入门案例
 
-### 3.1 创建简单流程
+### 创建简单流程
 
 我们先通过 Modeler 来绘制一个简单流程
 
@@ -121,7 +121,7 @@ Camunda BPM 是Camunda官方提供的一个`业务流程管理`平台,用来管�
 
 
 
-### 3.2 外部任务
+### 外部任务
 
 在上面设计的流程图，`刷卡付款`节点的处理是外部任务，Camunda 可以使多种语言实现业务逻辑，我们以Java为例来介绍。
 
@@ -217,7 +217,7 @@ public class Demo01 {
 
 
 
-### 3.4 启动流程
+### 启动流程
 
 我们使用Rest API发起流程，所以需要一个接口测试工具（例如：Postman），或者也可以使用电脑自带的curl
 
@@ -263,15 +263,15 @@ postman方式处理
 
 
 
-# 三、案例扩展
+# 案例扩展
 
 上面的案例过于简单，我们添加不同的任务节点和网关来丰富下
 
-## 1. 用户任务
+## 用户任务
 
 
 
-### 1.1 添加节点
+### 添加节点
 
  我们在上面的案例中添加一个`用户任务`来处理流程。
 
@@ -289,7 +289,7 @@ postman方式处理
 
 
 
-### 1.2 配置表单
+### 配置表单
 
 在`用户节点`处我们绑定表单数据。然后创建表单相关的字段，并添加对应的描述信息。
 
@@ -321,7 +321,7 @@ postman方式处理
 
 
 
-### 1.3 部署流程
+### 部署流程
 
 流程定义好之后我们就可以部署流程了。直接在`Camunda Modeler`工具栏上的上传按钮将流程上传到流程引擎中。部署后在`Camunda Web`中查看部署的流程。
 
@@ -331,7 +331,7 @@ postman方式处理
 
 
 
-### 1.4 测试流程
+### 测试流程
 
 打开任务列表（http://localhost:8080/camunda/app/tasklist/），使用 demo / demo 登录。点击右上角的 `Start process` ，在弹出的对话框中选择“付款流程”.
 
@@ -353,11 +353,11 @@ postman方式处理
 
 
 
-## 2.排他网关
+## 排他网关
 
 我们将使用**排他网关**(*Exclusive Gateways*)，为流程添加分支，仅在金额足够大的时候进行人工审核.
 
-### 2.1 添加网关节点
+### 添加网关节点
 
 首先打开`Camunda Modeler `，在左侧的工具架中找到网关（菱形），将它拖动到“付款请求”和“刷卡付款”之间，将“批准付款”向下移动再添加一个网关，调整流程，最后看起来类似这样：
 
@@ -365,7 +365,7 @@ postman方式处理
 
 
 
-### 2.2 配置网关
+### 配置网关
 
 接下来，我们选择“<1000”的连线，打开属性面板，选择“Condition Type”为“Expression”，这里我们使用[JAVA统一表达式语言](https://docs.camunda.org/manual/latest/user-guide/process-engine/expression-language/)编写条件，这里要做的是在金额小于1000时直接刷卡付款，则输入表达式 `${amount<1000}`
 
@@ -383,7 +383,7 @@ postman方式处理
 
 
 
-### 2.3 部署流程
+### 部署流程
 
 部署流程和上面的操作是一样的。
 
@@ -391,7 +391,7 @@ postman方式处理
 
 
 
-### 2.4 测试操作
+### 测试操作
 
 打开任务列表（http://localhost:8080/camunda/app/tasklist/），使用 demo / demo 登录,点击右上角的 Start process ，在弹出的对话框中选择“付款流程”,上面例子中，我们直接点击 Start，但这次我们要增加几个变量来测试动态的流程。
 
@@ -403,11 +403,11 @@ postman方式处理
 
 
 
-## 3.决策自动化
+## 决策自动化
 
 在上面的案例中我们在审批时是通过`用户任务`结合表单来做的审批，本案例我们来看看我们通过`DMN`为流程添加一个业务规则来处理
 
-### 3.1 添加业务规则
+### 添加业务规则
 
 打开 Camunda Modeler，点击 “批准付款”，在右面的扳手菜单中，将类型改为“**Business Rule Task** ”（业务规则任务）
 
@@ -420,7 +420,7 @@ postman方式处理
 
 
 
-### 3.2 创建DMN表
+### 创建DMN表
 
 点击 `File > New File > DMN Diagram`创建一个新的DMN,现在画布上已经存在一个决策元素了，选择它，然后在右侧属性面板中更改`Id`和`Name`，这里的Id需要和流程中的`Decision Ref`属性一致，这次我们输入Id为`approve-payment`
 
@@ -432,7 +432,7 @@ postman方式处理
 
 
 
-### 3.3 编辑DMN表
+### 编辑DMN表
 
 首先编辑输入参数，在本例中，为了简单，我们依据项目名进行判断，规则可以使用 `FEEL 表达式`、`JUEL`或者 `Script` 书写，详情可以阅读 https://docs.camunda.org/manual/latest/user-guide/dmn-engine/expressions-and-scripts/
 
@@ -450,7 +450,7 @@ postman方式处理
 
 
 
-### 3.4 部署DMN表
+### 部署DMN表
 
 点击底部的部署按钮，将DMN部署到流程引擎中
 
@@ -458,7 +458,7 @@ postman方式处理
 
 
 
-### 3.5 流程案例测试
+### 流程案例测试
 
 现在打开 http://localhost:8080/camunda/app/cockpit/ ，使用demo/demo登录，可以看到决策定义增加了一个，点击进去可以看到刚才编辑的DMN.
 

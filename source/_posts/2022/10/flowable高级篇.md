@@ -2175,7 +2175,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 信号中间抛出事件也就是在流程执行中的某个节点抛出了对应的信号，然后对应的信号中间捕获事件就会触发，我们通过具体的案例来演示如：
 
-![image-20220330235847392](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330235847392.png)
+![image-20220330235847392](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330235847392.png)
 
 
 
@@ -2189,7 +2189,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 
 
-![image-20220331000011215](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331000011215.png)
+![image-20220331000011215](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331000011215.png)
 
 完整的xml文件
 
@@ -2341,7 +2341,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 最后来看看信号边界事件，案例如下：
 
-![image-20220330202443905](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330202443905.png)
+![image-20220330202443905](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330202443905.png)
 
 完整的xml定义为
 
@@ -2472,7 +2472,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 
 
-![image-20220330203056055](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330203056055.png)
+![image-20220330203056055](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330203056055.png)
 
 
 
@@ -2485,7 +2485,7 @@ public class MyTwoDelegate implements JavaDelegate {
     }
 ```
 
-![image-20220330203233862](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330203233862.png)
+![image-20220330203233862](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330203233862.png)
 
 
 
@@ -2507,7 +2507,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 当流程执行到达**错误结束事件（error end event）**时，结束执行的当前分支，并抛出错误。这个错误可以由匹配的错误边界中间事件捕获。如果找不到匹配的错误边界事件，将会抛出异常。通过具体案例来详细讲解：
 
-![image-20220331100340069](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331100340069.png)
+![image-20220331100340069](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331100340069.png)
 
 完整的xml文件
 
@@ -2685,11 +2685,11 @@ public class MyTwoDelegate implements JavaDelegate {
 
 看控制台输出
 
-![image-20220330210538338](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330210538338.png)
+![image-20220330210538338](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330210538338.png)
 
 控制台输出的结果和我们预期的是一样的
 
-![image-20220330210708334](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330210708334.png)
+![image-20220330210708334](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330210708334.png)
 
 说明错误结束事件的作用就是在执行到错误结束的节点位置会抛出对应的错误，供需要获取的事件来处理。
 
@@ -2703,7 +2703,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 案例一我们介绍没有子流程的情况下终止的场景，具体案例如下
 
-![image-20220331102808059](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331102808059.png)
+![image-20220331102808059](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220331102808059.png)
 
 完整的xml文件：
 
@@ -2866,7 +2866,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 这时可以看到三个并行的Task任务：
 
-![image-20220330213147240](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330213147240.png)
+![image-20220330213147240](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330213147240.png)
 
 这时我们只需王五来处理即可，在上一步中我们已经对流程变量赋值了
 
@@ -2888,7 +2888,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 通过案例可以看到在没有子流程的情况下，终止结束事件会把整个流程都进程都结束了，而且在历史记录中也可以看到信息
 
-![image-20220330215127129](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330215127129.png)
+![image-20220330215127129](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330215127129.png)
 
 
 
@@ -2896,7 +2896,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 然后我们来看看在子流程中触发终止结束事件的案例：
 
-![image-20220330220208085](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330220208085.png)
+![image-20220330220208085](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330220208085.png)
 
 完整的xml内容：
 
@@ -3091,11 +3091,11 @@ public class MyTwoDelegate implements JavaDelegate {
 
 这时在ACT_RU_TASK中就应该有三条对应的TASK记录了
 
-![image-20220330232643286](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330232643286.png)
+![image-20220330232643286](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330232643286.png)
 
 然后我们执行`user1`的子任务，因为现在流程变量`flag=0`所以会触发终止结束事件
 
-![image-20220330232801450](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330232801450.png)
+![image-20220330232801450](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330232801450.png)
 
 执行任务：
 
@@ -3113,11 +3113,11 @@ public class MyTwoDelegate implements JavaDelegate {
 
 执行成功后我们可以发现子人工任务一没有了，但是也没有子人工任务二，但是主流程中的两个任务都还在
 
-![image-20220330232959807](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330232959807.png)
+![image-20220330232959807](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330232959807.png)
 
 而且进入到历史数据中也可以看到
 
-![image-20220330233448096](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330233448096.png)
+![image-20220330233448096](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220330233448096.png)
 
 
 
@@ -3129,13 +3129,13 @@ public class MyTwoDelegate implements JavaDelegate {
 
 具体通过案例来讲解：
 
-![image-20220401110131810](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401110131810.png)
+![image-20220401110131810](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401110131810.png)
 
 
 
 结束取消事件我们只能在事务子流程中使用，在FlowableUI中暂时没有找到这个组件，所以在Eclipse中来绘制
 
-![image-20220401110621048](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401110621048.png)
+![image-20220401110621048](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401110621048.png)
 
 
 
@@ -3283,7 +3283,7 @@ public class MyTwoDelegate implements JavaDelegate {
 
 流程说明：流程中定义了一个事务子流程和两个自动任务
 
-![image-20220401111036816](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111036816.png)
+![image-20220401111036816](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111036816.png)
 
 
 
@@ -3291,23 +3291,23 @@ public class MyTwoDelegate implements JavaDelegate {
 
 然后在事务子流程中定义了两个人工任务用一个排他网关连接，flag<=0 的情况下会触发 取消结束事件
 
-![image-20220401111201815](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111201815.png)
+![image-20220401111201815](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111201815.png)
 
 
 
 触发取消结束事件后同时会被取消边界事件捕获而走 取消事件结束的自动任务
 
-![image-20220401111316353](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111316353.png)
+![image-20220401111316353](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111316353.png)
 
 
 
 同时自动补偿任务也会触发，关联的自动任务也会触发
 
-![image-20220401111351513](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111351513.png)
+![image-20220401111351513](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111351513.png)
 
 注意在设置的时候需要设置补偿自动任务为可补偿的
 
-![image-20220401111438577](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111438577.png)
+![image-20220401111438577](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111438577.png)
 
 补偿自动任务绑定的JavaDelegate：
 
@@ -3389,7 +3389,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 输出结果：
 
-![image-20220401111758140](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111758140.png)
+![image-20220401111758140](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401111758140.png)
 
 
 
@@ -3401,7 +3401,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 通过补偿达到控制业务流程的目的就是补偿事件，比如我们正常的买机票的流程下订单购买，然后同时弹出支付流程页面。支付成功后就可以等待出票了，但是如果我们支付失败的话，这时要么重新支付，更换支付方式或者取消预订，这时取消预订我们就可以通过补偿事件来实现，具体的案例如下：
 
-![image-20220401202116847](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401202116847.png)
+![image-20220401202116847](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401202116847.png)
 
 完整的xml文件：
 
@@ -3532,7 +3532,7 @@ public class MyThreeDelegate implements JavaDelegate {
 
 
 
-![image-20220401202447583](D:\desktop\桌面文件\工作目录\01-录课资料\20-flowable\01-课件\https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401202447583.png)
+![image-20220401202447583](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220401202447583.png)
 
 微信支付绑定的JavaDelegate：
 
