@@ -7,9 +7,9 @@ categories: [笔记]
 # Flowable实战篇
 > lecture：波波老师
 
-# 一、Flowable整合SpringBoot
+# Flowable整合SpringBoot
 
-## 1.添加相关依赖
+## 添加相关依赖
 
 ```xml
 <dependency>
@@ -37,7 +37,7 @@ categories: [笔记]
 
 
 
-## 2.添加对应的配置
+## 添加对应的配置
 
 ```yml
 spring:
@@ -68,9 +68,9 @@ server:
 
 
 
-## 3.案例应用
+## 案例应用
 
-### 3.1 流程部署
+### 流程部署
 
 - *processes*目录下的任何BPMN 2.0流程定义都会被自动部署。创建*processes*目录，并在其中创建示例流程定义（命名为*one-task-process.bpmn20.xml*）。
 - *cases*目录下的任何CMMN 1.1事例都会被自动部署。
@@ -123,7 +123,7 @@ class FlowableSpringBoot28ApplicationTests {
 
 
 
-### 3.2 启动流程
+### 启动流程
 
 启动流程和前面介绍的就没什么差异了，通过RuntimeService来实现
 
@@ -142,7 +142,7 @@ class FlowableSpringBoot28ApplicationTests {
 
 
 
-### 3.3 处理流程
+### 处理流程
 
 处理流程和前面介绍的也一样，通过TaskService来处理
 

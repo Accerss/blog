@@ -8,7 +8,7 @@ categories: [笔记]
 > Lecture：波波老师
 
 
-# 一、Flowable介绍
+# Flowable介绍
 
 Flowable是BPMN的一个基于java的软件实现，不过Flowable不仅仅包括BPMN，还有DMN决策表和CMMN Case管理引擎，并且有自己的用户管理、微服务API等一系列功能，是一个服务平台。
 
@@ -18,11 +18,11 @@ Flowable是BPMN的一个基于java的软件实现，不过Flowable不仅仅包�
 
 
 
-# 二、Flowable基础
+# Flowable基础
 
 官方手册：https://tkjohn.github.io/flowable-userguide/#_introduction
 
-## 1.创建ProcessEngine
+## 创建ProcessEngine
 
 创建一个基本的maven工程，可以是Eclipse也可以是其他IDEA。然后添加两个依赖
 
@@ -113,7 +113,7 @@ log4j.appender.CA.layout.ConversionPattern= %d{hh:mm:ss,SSS} [%t] %-5p %c %x - %
 
 
 
-## 2.部署流程定义
+## 部署流程定义
 
 接下来我们构建一个非常简单的请假流程，Flowable引擎需要流程定义为BPMN 2.0格式，这是一个业界广泛接受的XML标准。 在Flowable术语中，我们将其称为一个**流程定义(process definition)**。一个*流程定义*可以启动多个**流程实例(process instance)**。*流程定义*可以看做是重复执行流程的蓝图。 在这个例子中，*流程定义*定义了请假的各个步骤，而一个*流程实例*对应某个雇员提出的一个请假申请。
 
@@ -306,7 +306,7 @@ processDefinition.getDescription() = null
 
 
 
-## 3.启动流程实例
+## 启动流程实例
 
 现在已经在流程引擎中*部署*了流程定义，因此可以使用这个*流程定义*作为“模板”启动*流程实例*。
 
@@ -368,7 +368,7 @@ processDefinition.getDescription() = null
 
 
 
-## 4.查看任务
+## 查看任务
 
 上面员工发起了一个请假流程，接下来就会流转到总经理这儿来处理，之前我们没有指定经理这的处理人，我们可以加一个
 
@@ -418,7 +418,7 @@ task.getName() = Approve or reject request
 
 
 
-## 5.完成任务
+## 完成任务
 
 现在李四这个角色可以来完成当前的任务了
 
@@ -485,7 +485,7 @@ public class SendRejectionMail implements JavaDelegate {
 
 
 
-## 6.流程的删除
+## 流程的删除
 
 有些流程已经没有用了，我们需要删除掉，其实也非常简单
 
@@ -513,7 +513,7 @@ public class SendRejectionMail implements JavaDelegate {
     }
 ```
 
-## 7.查看历史信息
+## 查看历史信息
 
 选择使用Flowable这样的流程引擎的原因之一，是它可以自动存储所有流程实例的**审计数据**或**历史数据**。这些数据可以用于创建报告，深入展现组织运行的情况，瓶颈在哪里，等等。
 
@@ -569,19 +569,19 @@ rejectEnd took 1 milliseconds
 
 
 
-# 三、Flowable流程设计器
+# Flowable流程设计器
 
-## 1.Eclipse Designer
+## Eclipse Designer
 
 Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于图形化地建模、测试与部署BPMN 2.0流程。
 
-### 1.1 下载安装Eclipse
+### 下载安装Eclipse
 
 去Eclipse官网下载即可：https://www.eclipse.org/downloads/packages/release 注意2020-09后的版本不再支持jdk8
 
 ![image-20220316202904261](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316202904261.png)
 
-&emsp;解压缩就可以了，然后进入解压缩的目录
+解压缩就可以了，然后进入解压缩的目录
 
 ![image-20220316203036602](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220316203036602.png)
 
@@ -597,7 +597,7 @@ Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于�
 
 
 
-### 1.2 安装Flowable插件
+### 安装Flowable插件
 
 然后我们再安装下Flowable的插件，选择**Help → Install New Software**。在下图面板中，点击*Add*按钮，并填写下列字段
 
@@ -652,7 +652,7 @@ Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于�
 
 
 
-### 1.3 创建项目
+### 创建项目
 
 然后我们就可以创建一个Flowable Project了
 
@@ -672,7 +672,7 @@ Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于�
 
 
 
-### 1.4 创建流程图
+### 创建流程图
 
 使用滑板来绘制流程，通过从右侧把图标拖拽到左侧的面板，最终的效果
 
@@ -704,7 +704,7 @@ Flowable提供了名为Flowable Eclipse Designer的Eclipse插件，可以用于�
 
 
 
-### 1.5 部署流程
+### 部署流程
 
 首先在Eclipse中生成bar文件，选中项目然后鼠标右击
 
@@ -892,7 +892,7 @@ public class Test02 {
 
 
 
-## 2.Flowable UI应用
+## Flowable UI应用
 
 Flowable提供了几个web应用，用于演示及介绍Flowable项目提供的功能：
 
@@ -905,7 +905,7 @@ Flowable提供了几个web应用，用于演示及介绍Flowable项目提供的�
 
 
 
-### 2.1 安装部署
+### 安装部署
 
 下载Tomcat：https://tomcat.apache.org/download-80.cgi 官网下载后解压缩到非中文目录即可，然后是下载FlowableUI的文件，在Flowable6.6之后把FlowableUI中提供的四个功能合并到了一起。
 
@@ -921,7 +921,7 @@ Tomcat目录：
 
 
 
-### 2.2 启动服务
+### 启动服务
 
 启动Tomcat服务，执行startup.bat文件
 
@@ -939,7 +939,7 @@ Tomcat目录：
 
 
 
-### 2.3 用户管理
+### 用户管理
 
 我们先在 `身份管理应用程序` 中创建用户并授权
 
@@ -967,7 +967,7 @@ Tomcat目录：
 
 
 
-### 2.4 绘制流程
+### 绘制流程
 
 
 
@@ -1001,7 +1001,7 @@ Tomcat目录：
 
 
 
-### 2.5 部署流程
+### 部署流程
 
 绘制好的流程图，我们只需要一键导出即可
 
@@ -1021,9 +1021,9 @@ Tomcat目录：
 
 
 
-### 2.6 FlowableUI 演示
+### FlowableUI 演示
 
-#### 2.6.1 部署流程
+#### 部署流程
 
 在FlowableUI中提供了演示程序
 
@@ -1059,7 +1059,7 @@ Tomcat目录：
 
 
 
-#### 2.6.2 启动流程
+#### 启动流程
 
 发布了应用程序后我们就可以来启动流程了
 
@@ -1111,9 +1111,9 @@ Tomcat目录：
 
 
 
-# 四、Flowable基础表结构
+# Flowable基础表结构
 
-## 1.表结构讲解
+## 表结构讲解
 
 工作流程的相关操作都是操作存储在对应的表结构中，为了能更好的弄清楚Flowable的实现原理和细节，我们有必要先弄清楚Flowable的相关表结构及其作用。在Flowable中的表结构在初始化的时候会创建五类表结构，具体如下：
 
@@ -1167,9 +1167,9 @@ Tomcat目录：
 
 
 
-## 2.ProcessEngine讲解
+## ProcessEngine讲解
 
-### 2.1 硬编码的方式
+### 硬编码的方式
 
 我们前面讲解案例的时候是通过ProcessEngineConfiguration这个配置类来加载的。
 
@@ -1197,7 +1197,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
 
 
 
-### 2.2 配置文件
+### 配置文件
 
 除了上面的硬编码的方式外，我们还可以在resources目录下创建一个`flowable.cfg.xml`文件，注意这个名称是固定的哦。内容如下：
 
@@ -1304,7 +1304,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
 
 
 
-### 2.3 自定义配置文件
+### 自定义配置文件
 
 最后我们如果要加载自定义名称的配置文件可以通过ProcessEngineConfiguration中的对应构造方法来实现
 
@@ -1322,7 +1322,7 @@ ProcessEngine processEngine = cfg.buildProcessEngine();
 
 
 
-## 3. Servcie服务接口
+## Servcie服务接口
 
 Service是工作流引擎提供用于进行工作流部署、执行、管理的服务接口，我们使用这些接口可以就是操作服务对应的数据表
 
@@ -1332,7 +1332,7 @@ Service是工作流引擎提供用于进行工作流部署、执行、管理的�
 
 
 
-### 3.1 Service创建方式
+### Service创建方式
 
 通过ProcessEngine创建Service
 
@@ -1345,7 +1345,7 @@ TaskService taskService = processEngine.getTaskService();
 // ...
  ```
 
-### 3.2 Service总览
+### Service总览
 
 | service名称       | service作用              |
 | ----------------- | ------------------------ |
@@ -1387,13 +1387,13 @@ Activiti的引擎管理类，提供了对Flowable 流程引擎的管理和维护
 
 
 
-## 4.图标介绍
+## 图标介绍
 
 BPMN 2.0是业务流程建模符号2.0的缩写。它由Business Process Management Initiative这个非营利协会创建并不断发展。作为一种标识，BPMN 2.0是使用一些**符号**来明确业务流程设计流程图的一整套符号规范，它能增进业务建模时的沟通效率。目前BPMN2.0是最新的版本，它用于在BPM上下文中进行布局和可视化的沟通。接下来我们先来了解在流程设计中常见的 符号。
 
 BPMN2.0的**基本符合**主要包含：
 
-### 4.1 事件图标
+### 事件图标
 
 在Flowable中的事件图标启动事件，边界事件,中间事件和结束事件.
 
@@ -1401,13 +1401,13 @@ BPMN2.0的**基本符合**主要包含：
 
 
 
-### 4.2 活动(任务)图标
+### 活动(任务)图标
 
 活动是工作或任务的一个通用术语。一个活动可以是一个任务，还可以是一个当前流程的子处理流程； 其次，你还可以为活动指定不同的类型。常见活动如下:
 
 ![image-20220320103929543](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220320103929543.png)
 
-### 4.3 结构图标
+### 结构图标
 
 结构图标可以看做是整个流程活动的结构，一个流程中可以包括子流程。常见的结构有：
 
@@ -1415,7 +1415,7 @@ BPMN2.0的**基本符合**主要包含：
 
 
 
-### 4.4 网关图标
+### 网关图标
 
 网关用来处理决策，有几种常用网关需要了解：
 
@@ -1429,9 +1429,9 @@ BPMN2.0的**基本符合**主要包含：
 
 
 
-## 5.流程部署详解
+## 流程部署详解
 
-### 5.1 部署实现
+### 部署实现
 
 我们先来看下流程部署的具体过程。代码实现
 
@@ -1455,7 +1455,7 @@ BPMN2.0的**基本符合**主要包含：
     }
 ```
 
-### 5.2 部署涉及表结构
+### 部署涉及表结构
 
 涉及到的三张表：
 
@@ -1513,7 +1513,7 @@ BPMN2.0的**基本符合**主要包含：
 
 
 
-### 5.3 挂起和激活
+### 挂起和激活
 
 部署的流程默认的状态为激活，如果我们暂时不想使用该定义的流程，那么可以挂起该流程。当然该流程定义下边所有的流程实例全部暂停。
 
@@ -1558,7 +1558,7 @@ BPMN2.0的**基本符合**主要包含：
 
 
 
-## 6.启动流程实例
+## 启动流程实例
 
 然后我们来看看启动流程实例的过程。实现代码如下：
 
@@ -1733,7 +1733,7 @@ ACT_RU_IDENTITYLINK 运行时用户关系信息
 
 
 
-## 7.处理流程
+## 处理流程
 
 上面的流程已经流转到了zhangsan这个用户这里，然后可以开始审批了
 
@@ -1820,7 +1820,7 @@ IDENTITYLINK中会记录每次流程操作的信息
 
 ![image-20220322135719104](https://gwzone.oss-cn-beijing.aliyuncs.com/bpmn/image-20220322135719104.png)
 
-## 8.完成一个流程
+## 完成一个流程
 
 然后我们把第一个流程处理完成
 
