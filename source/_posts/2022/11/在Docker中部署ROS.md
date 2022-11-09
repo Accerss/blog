@@ -4,13 +4,13 @@ date: 2022-11-09 22:01:43
 tags: [Docker, ros]
 categories: [笔记]
 ---
-# 在Docker中部署ROS
+
 
 ——提高开发环境鲁棒性
 
-## 安装之前
+# 安装之前
 
-### Docker容器会占用多大存储空间
+## Docker容器会占用多大存储空间
 
 Docker通过images创造container，在container中部署和开发应用。
 
@@ -22,7 +22,7 @@ ROS官方已经提供了支持Docker的ros images，镜像已经配置好了ros�
 
 ![image-20221109153440000](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221109153440000.png)
 
-### 查看docker里面可视化界面
+## 查看docker里面可视化界面
 
 宿主机开启xhost, 使能宿主机接收其他客户端的显示需求
  `xhost +`
@@ -30,7 +30,7 @@ ROS官方已经提供了支持Docker的ros images，镜像已经配置好了ros�
 docker创建容器时参数设置xserver挂载地址即可
  `-e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix`
 
-### docker里面的程序如何与主机的程序通讯
+## docker里面的程序如何与主机的程序通讯
 
 采用socket通信
 
@@ -57,7 +57,7 @@ docker创建容器时，默认分配了bridge网络，这样所有的容器都�
 
 那么容器会和宿主机共享网络，直接telnet 127.0.0.1 8000可以telnet通信。
 
-## docker可视化
+# docker可视化
 
 docker中开启GUI原理：
  xhost 是用来控制X server访问权限的。通常当你从hostA登陆到hostB上运行hostB上的应用程序时，做为应用程序来说，hostA是client,但是作为图形来说，**是在hostA上显示的，需要使用hostA的Xserver**,所以hostA是server。因此在登陆到hostB前，需要在hostA上运行xhost +来使其它用户能够访问hostA的Xserver.
@@ -69,7 +69,7 @@ xhost + **是使所有用户都能访问Xserver.**
  xhost + nis:user@domain使domain上的nis用户user能够访问
  xhost + inet:user@domain使domain上的inet用户能够访问。
 
-### 运行xserver
+## 运行xserver
 
 终端输入
 `xhost +`
@@ -77,7 +77,7 @@ xhost + **是使所有用户都能访问Xserver.**
 - 若成功启动，则跳到第4.2继续执行。
 - 若显示`xhost: unable to open display`，则说明没有安装vncserver。
 
-### 安装vncserver
+## 安装vncserver
 
 进入root，确认下vncserver确实没装（我也不明白为什么要进入root，但是照做就行）
  `su root`
@@ -110,9 +110,9 @@ xhost + **是使所有用户都能访问Xserver.**
 
 启动容器，测试gazebo和rviz，都可以正常打开
 
-## 多ros容器通信
+# 多ros容器通信
 
-### 第一个终端——roscore：
+## 第一个终端——roscore：
 
 ①docker命令新建一个容器（带GUI环境变量）
 
@@ -141,7 +141,7 @@ docker run -it \
 `source /opt/ros/kinetic/setup.bash`
 `roscore`
 
-### 第二个终端——turtlesim_node
+## 第二个终端——turtlesim_node
 
 ①先查看之前新建的容器名称
  `docker ps --all`
@@ -156,9 +156,9 @@ docker run -it \
  `source /opt/ros/kinetic/setup.bash`
  `rosrun turtlesim turtlesim_node`
 
-![img](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/20587097-f9e2481d64ba9892.png)
+![image-20221109220609929](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221109220609929.png)
 
-### 第三个终端——键盘控制：
+## 第三个终端——键盘控制：
 
  ①进入同一个容器中
  `docker exec -it <container_name> /bin/bash`
@@ -172,7 +172,7 @@ docker run -it \
 `rosrun turtlesim turtle_teleop_key`
  此时即可控制小海龟运动
 
-![img](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/20587097-97dad70fedf029a1.png)
+![image-20221109220621036](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221109220621036.png)
 
 
 
