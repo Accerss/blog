@@ -135,3 +135,7 @@ search:
   field: post
   content: true
   format: striptags
+
+# 跳过文件夹下所有文件
+skip_render: 
+  - "HTML/*"  
