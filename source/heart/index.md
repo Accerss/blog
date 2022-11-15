@@ -16,7 +16,7 @@ date: 2022-11-14 23:41:24
 		// particle velocity in pixels/sec
 		effect: -0.75,
 		// play with this for a nice effect
-		size: 20,
+		size: 10,
 		// particle size in pixels
 	},
 };
