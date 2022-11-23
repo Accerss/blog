@@ -5,7 +5,7 @@ date: 2022-11-14 23:41:24
 
 <canvas id="pinkboard"></canvas>
 
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
 <script>
 console.log("js loaded");
 var settings = {
