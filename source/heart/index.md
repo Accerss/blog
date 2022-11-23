@@ -5,7 +5,7 @@ date: 2022-11-14 23:41:24
 
 <canvas id="pinkboard"></canvas>
 
-<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script>
 console.log("js loaded");
 var settings = {
