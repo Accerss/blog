@@ -39,8 +39,8 @@ YF390-0HF8P-M81RQ-2DXQE-M2UT6
 
 ## 语音交互源代码下载
 
-链接：https://pan.baidu.com/s/1bpa38Ht3UrNDdxzLvKVnNg 
-提取码：2j1q
+链接：https://pan.baidu.com/s/13nqlBSbhp8kZfVrlB1nJVg 
+提取码：1lyq
 
 ## VMware Tools的安装
 
