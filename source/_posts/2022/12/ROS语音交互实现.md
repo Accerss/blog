@@ -50,13 +50,13 @@ YF390-0HF8P-M81RQ-2DXQE-M2UT6
 
 ## 重新启动虚拟机中的Ubuntu系统
 
-将源代码文件夹压缩包ros_voice_system-master，复制到虚拟机/home目录下
+将源代码文件夹压缩包ros_voice_system-master.tar.gz，复制到虚拟机/home目录下
 
-![image-20221130152223705](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221130152223705.png)
+![image-20221202212050101](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221202212050101.png)
 
 ```bash
 cd /home/ros/
-tar -zxvf ros_voice_system-master.tar
+tar -zxvf ros_voice_system-master.tar.gz
 ```
 
 解压操作也可以通过图形化界面，右键，提取压缩包中的文件
@@ -116,7 +116,7 @@ roslaunch voice_bringup voice_bringup.launch
 如果现在就想唤醒体验一下，也可以暂时通过命令行唤醒，首先打开一个新终端，执行一下命令
 
 ```bash
-rostopic pub /voice_system/wakeup_topic std_msgs/Stng "data: '卡丁'"
+rostopic  pub /voice_system/wakeup_topic std_msgs/String "data: '卡丁'"
 ```
 
 ## 程序解读
@@ -134,8 +134,6 @@ rostopic pub /voice_system/wakeup_topic std_msgs/Stng "data: '卡丁'"
   4.语音合成(TTS):科大讯飞在线语音合成模块;
 
 ![image-20221201101557176](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221201101557176.png)
-
-
 
 比如语音识别功能，配置了两套方案，如果选用科大讯飞语音识别(iflytek_asr),就需要把百度语音识别(baidu_asr)注释掉，避免冲突，其他功能配置方法同理
 
@@ -165,15 +163,33 @@ rostopic pub /voice_system/wakeup_topic std_msgs/Stng "data: '卡丁'"
 
 
 
-7.找到项目中**baidu_asr.launch**和**baidu_asr.launch**启动文件，将参数配置中的ID，Api，Secrect进行替换，即可调用自己刚才申请的服务，更换后执行roslaunch voice_bringup voice_bringup.launch 重启项目
+7.找到项目中**baidu_asr.launch**和**baidu_tts.launch**启动文件，将参数配置中的ID，Api，Secrect进行替换，即可调用自己刚才申请的服务，更换后执行roslaunch voice_bringup voice_bringup.launch 重启项目
 
 ![image-20221201104326200](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221201104326200.png)
 
-其他服务申请与配置过程大致相同
+以上是百度语音引擎服务配置的过程，源代码默认使用的科大讯飞语音服务引擎，大家可以体验自己申请百度智能云服务，替换科大讯飞服务引擎。
 
 科大讯飞开放平台：https://www.xfyun.cn/
 
+如果想申请自己的科大讯飞语音服务引擎，大致过程一致，需要申请语音识别和语音合成服务，不同的是，需要在平台下载对应的SDK和AppID和在项目对应上，也就是说每个人SDK和AppID一一对应，仅替换AppID会出现（Recognizer error 10407）这个错误。
+
+![image-20221202213946187](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221202213946187.png)
+
+下载sdk压缩包后，进入Linux_iatxxx_xxxxxxxx/libs/x64 下（64位选“x64”，32位选”x86“），将libmsc.so文件复制到虚拟机HOME目录下，如图：
+
+![image-20221202215427420](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20221202215427420.png)
+
+打开终端执行,将libmsc.so复制到/usr/local/lib/目录下，一定在复制完so文件后，执行`sudo ldconfig`。
+执行完，再次运行例行程序，测试成功。
+
+```bash
+sudo cp /home/ros/libmsc.so /usr/local/lib/
+sudo ldconfig
+```
+
 图灵机器人开放平台：http://www.tuling123.com/
+
+也可以申请自己专属的机器人，但是目前该开放平台不提供免费的体验资源，并且每天调用量有限
 
 # 探索发现
 
@@ -184,5 +200,4 @@ Idea1：自定义唤醒词
 Idea2：基于现有功能，实现连续对话
 
 Idea3：基于知识图谱自定义某领域语音问答功能
-
 
