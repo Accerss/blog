@@ -5,8 +5,10 @@ date: 2022-11-14 23:41:24
 
 <canvas id="pinkboard"></canvas>
 
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.1.1.min.js"></script>
 <script>
-    var settings = {
+console.log("js loaded");
+var settings = {
 	particles: {
 		length: 500,
 		// maximum amount of particles
@@ -24,39 +26,44 @@ date: 2022-11-14 23:41:24
 /*
  * RequestAnimationFrame polyfill by Erik Möller
  */
-(function() {
-	var b = 0;
-	var c = ["ms", "moz", "webkit", "o"];
-	for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
-		window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
-		window.cancelAnimationFrame = window[c[a] + "CancelAnimationFrame"] || window[c[a] + "CancelRequestAnimationFrame"]
-	}
-	if (!window.requestAnimationFrame) {
-		window.requestAnimationFrame = function(h, e) {
-			var d = new Date().getTime();
-			var f = Math.max(0, 16 - (d - b));
-			var g = window.setTimeout(function() {
-				h(d + f)
-			},
-			f);
-			b = d + f;
-			return g
+
+(
+	function() {
+		console.log("heart into page");
+
+		var b = 0;
+		var c = ["ms", "moz", "webkit", "o"];
+		for (var a = 0; a < c.length && !window.requestAnimationFrame; ++a) {
+			window.requestAnimationFrame = window[c[a] + "RequestAnimationFrame"];
+			window.cancelAnimationFrame = window[c[a] + "CancelAnimationFrame"] || window[c[a] + "CancelRequestAnimationFrame"]
 		}
-	}
-	if (!window.cancelAnimationFrame) {
-		window.cancelAnimationFrame = function(d) {
-			clearTimeout(d)
+		if (!window.requestAnimationFrame) {
+			window.requestAnimationFrame = function(h, e) {
+				var d = new Date()
+					.getTime();
+				var f = Math.max(0, 16 - (d - b));
+				var g = window.setTimeout(function() {
+						h(d + f)
+					},
+					f);
+				b = d + f;
+				return g
+			}
 		}
-	}
-} ());
+		if (!window.cancelAnimationFrame) {
+			window.cancelAnimationFrame = function(d) {
+				clearTimeout(d)
+			}
+		}
+	}());
 
 /*
  * Point class
  */
 var Point = (function() {
 	function Point(x, y) {
-		this.x = (typeof x !== 'undefined') ? x: 0;
-		this.y = (typeof y !== 'undefined') ? y: 0;
+		this.x = (typeof x !== 'undefined') ? x : 0;
+		this.y = (typeof y !== 'undefined') ? y : 0;
 	}
 	Point.prototype.clone = function() {
 		return new Point(this.x, this.y);
@@ -119,8 +126,8 @@ var Particle = (function() {
  */
 var ParticlePool = (function() {
 	var particles, firstActive = 0,
-	firstFree = 0,
-	duration = settings.particles.duration;
+		firstFree = 0,
+		duration = settings.particles.duration;
 
 	function ParticlePool(length) {
 		// create and populate particle pool
@@ -171,30 +178,33 @@ var ParticlePool = (function() {
 /*
  * Putting it all together
  */
-(function(canvas) {
 
-    var canvasObj = document.getElementById("pinkboard");
-    var parentObj = canvasObj.parentNode; //.parentNode.parentNode;
-    // console.log(parentObj.clientWidth);
-    canvasObj.width = parentObj.clientWidth;
-    canvasObj.height = parentObj.clientWidth;
+$(document).ready(function() {
+	canvas = document.getElementById("pinkboard");
+	console.log("heart into");
+	console.log(canvas)
+	var canvasObj = document.getElementById("pinkboard");
+	var parentObj = canvasObj.parentNode; //.parentNode.parentNode;
+	// console.log(parentObj.clientWidth);
+	canvasObj.width = parentObj.clientWidth;
+	canvasObj.height = parentObj.clientWidth;
 
-    window.addEventListener("resize", () => {
-        var canvasObj = document.getElementById("pinkboard");
-        if (canvasObj) {
-            var parentObj = canvasObj.parentNode; //.parentNode.parentNode;
-            // console.log(parentObj.clientWidth);
-            canvasObj.width = parentObj.clientWidth;
-            canvasObj.height = parentObj.clientWidth;
-        }
-    });
+	window.addEventListener("resize", () => {
+		var canvasObj = document.getElementById("pinkboard");
+		if (canvasObj) {
+			var parentObj = canvasObj.parentNode; //.parentNode.parentNode;
+			// console.log(parentObj.clientWidth);
+			canvasObj.width = parentObj.clientWidth;
+			canvasObj.height = parentObj.clientWidth;
+		}
+	});
 
 
 	var context = canvas.getContext('2d'),
-	particles = new ParticlePool(settings.particles.length),
-	particleRate = settings.particles.length / settings.particles.duration,
-	// particles/sec
-	time;
+		particles = new ParticlePool(settings.particles.length),
+		particleRate = settings.particles.length / settings.particles.duration,
+		// particles/sec
+		time;
 
 	// get point on heart with -PI <= t <= PI
 	function pointOnHeart(t) {
@@ -204,7 +214,7 @@ var ParticlePool = (function() {
 	// creating the particle image using a dummy canvas
 	var image = (function() {
 		var canvas = document.createElement('canvas'),
-		context = canvas.getContext('2d');
+			context = canvas.getContext('2d');
 		canvas.width = settings.particles.size;
 		canvas.height = settings.particles.size;
 		// helper function to create the path
@@ -240,8 +250,9 @@ var ParticlePool = (function() {
 		requestAnimationFrame(render);
 
 		// update time
-		var newTime = new Date().getTime() / 1000,
-		deltaTime = newTime - (time || newTime);
+		var newTime = new Date()
+			.getTime() / 1000,
+			deltaTime = newTime - (time || newTime);
 		time = newTime;
 
 		// clear canvas
@@ -251,7 +262,8 @@ var ParticlePool = (function() {
 		var amount = particleRate * deltaTime;
 		for (var i = 0; i < amount; i++) {
 			var pos = pointOnHeart(Math.PI - 2 * Math.PI * Math.random());
-			var dir = pos.clone().length(settings.particles.velocity);
+			var dir = pos.clone()
+				.length(settings.particles.velocity);
 			particles.add(canvas.width / 2 + pos.x, canvas.height / 2 - pos.y, dir.x, -dir.y);
 		}
 
@@ -269,9 +281,11 @@ var ParticlePool = (function() {
 
 	// delay rendering bootstrap
 	setTimeout(function() {
-		onResize();
-		render();
-	},
-	10);
-})(document.getElementById('pinkboard'));
+			onResize();
+			render();
+		},
+		10);
+});
+//)(document.getElementById("pinkboard"));
+
 </script>
