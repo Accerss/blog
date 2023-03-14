@@ -12,7 +12,10 @@ comment: true
 
 ## 灵感
 
-使用您点击“返回”时显示的工具栏来添加图片、视频等
+
+![image-20230314160259261](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20230314160259261.png)
+
+![image-20230314160312122](https://gwzone.oss-cn-beijing.aliyuncs.com/typora-user-images/image-20230314160312122.png)
 
 
 ## 想法
