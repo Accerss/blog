@@ -1,5 +1,5 @@
 ---
-title: redis学习
+title: Redis学习
 date: 2023-03-21 20:29:12
 tags: [java,Redis]
 categories: [笔记]
